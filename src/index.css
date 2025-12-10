@@ -128,12 +128,59 @@
     box-shadow: 0 0 30px hsl(var(--primary) / 0.1);
   }
 
-  /* Grid background */
+  /* Grid background - 90s style */
   .grid-bg {
     background-image: 
-      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    background-size: 60px 60px;
+      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* 90s beveled border */
+  .bevel-border {
+    border: 2px solid;
+    border-color: hsl(var(--border)) hsl(220 15% 10%) hsl(220 15% 10%) hsl(var(--border));
+  }
+
+  /* Scanline effect */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--background) / 0.03) 2px,
+      hsl(var(--background) / 0.03) 4px
+    );
+    pointer-events: none;
+  }
+
+  /* Expandable card */
+  .expand-card {
+    @apply bg-card/50 border border-border backdrop-blur-sm overflow-hidden;
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .expand-card:hover {
+    @apply border-primary/70;
+    box-shadow: 
+      0 0 40px hsl(var(--primary) / 0.15),
+      inset 0 0 60px hsl(var(--primary) / 0.03);
+  }
+
+  /* Media container with 90s frame */
+  .media-frame {
+    @apply relative bg-muted/50 border-2 border-border;
+    border-color: hsl(220 15% 25%) hsl(220 15% 8%) hsl(220 15% 8%) hsl(220 15% 25%);
+  }
+
+  /* CRT glow effect */
+  .crt-glow {
+    box-shadow: 
+      0 0 10px hsl(var(--primary) / 0.3),
+      inset 0 0 20px hsl(var(--primary) / 0.1);
   }
 
   /* Gradient line */
