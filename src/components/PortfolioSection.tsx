@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Play, Pause, Film, Tv, FileVideo, Palette, Volume2 } from "lucide-react";
+import { Play, Pause, Film, Tv, FileVideo, Palette } from "lucide-react";
 
 type Category = "all" | "commercials" | "films" | "documentaries" | "soundart";
 
@@ -10,18 +10,18 @@ interface Project {
   client: string;
   year: number;
   description: string;
-  tags: string[];
+  role: string;
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "Nike - Just Sound It",
+    title: "Nike — Just Sound It",
     category: "commercials",
     client: "Nike Inc.",
     year: 2024,
-    description: "Full sound design for global campaign featuring immersive athletic soundscapes",
-    tags: ["Foley", "Mix", "Sound Design"],
+    description: "Global campaign featuring immersive athletic soundscapes and brand sonic identity",
+    role: "Sound Design & Mix",
   },
   {
     id: 2,
@@ -29,8 +29,8 @@ const projects: Project[] = [
     category: "films",
     client: "A24 Films",
     year: 2023,
-    description: "Feature film sound design - psychological thriller with layered ambient textures",
-    tags: ["Feature Film", "Ambient", "Dialogue Edit"],
+    description: "Psychological thriller with layered ambient textures and spatial audio design",
+    role: "Sound Design & Dialogue Edit",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const projects: Project[] = [
     client: "National Geographic",
     year: 2024,
     description: "Underwater documentary exploring marine life through innovative sound capture",
-    tags: ["Field Recording", "Nature", "Mix"],
+    role: "Field Recording & Mix",
   },
   {
     id: 4,
@@ -48,16 +48,16 @@ const projects: Project[] = [
     client: "MoMA PS1",
     year: 2023,
     description: "Interactive installation exploring spatial audio in gallery environments",
-    tags: ["Installation", "Interactive", "Spatial Audio"],
+    role: "Composition & Technical Design",
   },
   {
     id: 5,
-    title: "Coca-Cola Refresh",
+    title: "Coca-Cola — Refresh",
     category: "commercials",
     client: "Coca-Cola",
     year: 2024,
-    description: "Signature sound branding and commercial audio for summer campaign",
-    tags: ["Brand Sound", "Jingle", "Mix"],
+    description: "Signature sound branding and commercial audio for global summer campaign",
+    role: "Sound Design & Brand Audio",
   },
   {
     id: 6,
@@ -66,34 +66,16 @@ const projects: Project[] = [
     client: "Paramount Pictures",
     year: 2023,
     description: "Sci-fi feature with synthesized soundscapes and futuristic audio design",
-    tags: ["Synth", "SFX", "Feature Film"],
-  },
-  {
-    id: 7,
-    title: "Vanishing Voices",
-    category: "documentaries",
-    client: "HBO Documentary",
-    year: 2024,
-    description: "Documentary preserving endangered languages through immersive audio",
-    tags: ["Voice", "Cultural", "Field Recording"],
-  },
-  {
-    id: 8,
-    title: "Frequency Drift",
-    category: "soundart",
-    client: "Tate Modern",
-    year: 2024,
-    description: "Generative audio sculpture responding to visitor movement",
-    tags: ["Generative", "Sculpture", "Interactive"],
+    role: "Sound Design & Foley",
   },
 ];
 
 const categories: { value: Category; label: string; icon: React.ReactNode }[] = [
-  { value: "all", label: "ALL WORKS", icon: <Volume2 className="w-4 h-4" /> },
-  { value: "commercials", label: "COMMERCIALS", icon: <Tv className="w-4 h-4" /> },
-  { value: "films", label: "FILMS", icon: <Film className="w-4 h-4" /> },
-  { value: "documentaries", label: "DOCS", icon: <FileVideo className="w-4 h-4" /> },
-  { value: "soundart", label: "SOUND ART", icon: <Palette className="w-4 h-4" /> },
+  { value: "all", label: "All", icon: null },
+  { value: "commercials", label: "Commercials", icon: <Tv className="w-4 h-4" /> },
+  { value: "films", label: "Films", icon: <Film className="w-4 h-4" /> },
+  { value: "documentaries", label: "Documentaries", icon: <FileVideo className="w-4 h-4" /> },
+  { value: "soundart", label: "Sound Art", icon: <Palette className="w-4 h-4" /> },
 ];
 
 const PortfolioSection = () => {
@@ -105,95 +87,79 @@ const PortfolioSection = () => {
     ? projects 
     : projects.filter(p => p.category === activeCategory);
 
-  const getCategoryColor = (category: Category) => {
-    switch (category) {
-      case "commercials": return "text-primary neon-text-cyan";
-      case "films": return "text-secondary neon-text-pink";
-      case "documentaries": return "text-accent neon-text-green";
-      case "soundart": return "text-neon-yellow text-glow";
-      default: return "text-foreground";
-    }
-  };
-
   const togglePlay = (id: number) => {
     setPlayingId(playingId === id ? null : id);
   };
 
   return (
-    <section className="min-h-screen py-20 px-4 bg-background relative">
-      {/* Section header */}
-      <div className="text-center mb-12">
-        <div className="flex items-center justify-center gap-4 mb-4">
-          <div className="h-[2px] w-16 bg-gradient-to-r from-transparent to-border" />
-          <span className="font-pixel text-sm text-muted-foreground">{"<<<"}</span>
-          <h2 className="font-arcade text-xl md:text-2xl text-primary neon-text-cyan">
-            PORTFOLIO
-          </h2>
-          <span className="font-pixel text-sm text-muted-foreground">{">>>"}</span>
-          <div className="h-[2px] w-16 bg-gradient-to-l from-transparent to-border" />
-        </div>
-        <p className="font-pixel text-lg text-muted-foreground">
-          SELECT A CATEGORY TO FILTER WORKS
-        </p>
-      </div>
-
-      {/* Category filters */}
-      <div className="flex flex-wrap justify-center gap-2 mb-12">
-        {categories.map((cat) => (
-          <button
-            key={cat.value}
-            onClick={() => setActiveCategory(cat.value)}
-            className={`retro-button flex items-center gap-2 text-xs ${
-              activeCategory === cat.value 
-                ? "!text-primary !border-primary" 
-                : ""
-            }`}
-          >
-            {cat.icon}
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Projects grid */}
+    <section className="min-h-screen py-32 px-6 bg-background relative">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Section header */}
+        <div className="mb-20">
+          <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-4">
+            Selected Work
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
+            Portfolio
+          </h2>
+          <div className="gradient-line max-w-xs" />
+        </div>
+
+        {/* Category filters */}
+        <div className="flex flex-wrap gap-2 mb-16">
+          {categories.map((cat) => (
+            <button
+              key={cat.value}
+              onClick={() => setActiveCategory(cat.value)}
+              className={`font-mono text-sm uppercase tracking-widest px-5 py-2.5 border transition-all duration-300 ${
+                activeCategory === cat.value 
+                  ? "border-primary text-primary bg-primary/5" 
+                  : "border-border text-muted-foreground hover:border-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Projects grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {filteredProjects.map((project, index) => (
-            <div
+            <article
               key={project.id}
-              className="retro-card group animate-fade-in"
+              className="pro-card group animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
               {/* Project header */}
-              <div className="flex items-start justify-between mb-4">
+              <div className="flex items-start justify-between mb-6">
                 <div>
-                  <span className={`font-pixel text-xs ${getCategoryColor(project.category)}`}>
-                    [{project.category.toUpperCase()}]
-                  </span>
-                  <h3 className="font-arcade text-sm md:text-base text-foreground mt-1 group-hover:text-primary transition-colors">
+                  <p className="font-mono text-xs uppercase tracking-widest text-primary mb-2">
+                    {project.category === "soundart" ? "Sound Art" : project.category}
+                  </p>
+                  <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
                 </div>
-                <span className="font-pixel text-sm text-muted-foreground">
+                <span className="font-mono text-sm text-muted-foreground">
                   {project.year}
                 </span>
               </div>
 
               {/* Waveform visualization */}
-              <div className="bg-muted/50 p-4 mb-4 border border-border">
-                <div className="flex items-center gap-1 h-12">
-                  {Array.from({ length: 32 }).map((_, i) => (
+              <div className="bg-muted/30 p-4 mb-6 border border-border/50">
+                <div className="flex items-center gap-0.5 h-12">
+                  {Array.from({ length: 48 }).map((_, i) => (
                     <div
                       key={i}
-                      className={`w-1 bg-primary transition-all duration-200 waveform-bar ${
-                        playingId === project.id ? "" : "!animate-none"
+                      className={`flex-1 bg-primary/40 transition-all duration-200 ${
+                        playingId === project.id ? "waveform-bar active" : ""
                       }`}
                       style={{
-                        height: `${Math.random() * 100}%`,
-                        animationDelay: `${i * 50}ms`,
-                        opacity: hoveredId === project.id || playingId === project.id ? 1 : 0.3,
+                        height: `${20 + Math.random() * 80}%`,
+                        animationDelay: `${i * 30}ms`,
+                        opacity: hoveredId === project.id || playingId === project.id ? 1 : 0.4,
                       }}
                     />
                   ))}
@@ -201,50 +167,38 @@ const PortfolioSection = () => {
               </div>
 
               {/* Play button and client */}
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-6">
                 <button
                   onClick={() => togglePlay(project.id)}
-                  className="retro-button flex items-center gap-2 text-xs"
+                  className="flex items-center gap-3 font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-300"
                 >
                   {playingId === project.id ? (
                     <>
-                      <Pause className="w-4 h-4" /> PAUSE
+                      <Pause className="w-4 h-4" /> Pause
                     </>
                   ) : (
                     <>
-                      <Play className="w-4 h-4" /> PLAY DEMO
+                      <Play className="w-4 h-4" /> Play Demo
                     </>
                   )}
                 </button>
-                <span className="font-pixel text-sm text-muted-foreground">
+                <span className="font-mono text-sm text-muted-foreground">
                   {project.client}
                 </span>
               </div>
 
               {/* Description */}
-              <p className="font-pixel text-sm text-muted-foreground mb-4">
+              <p className="font-mono text-sm text-muted-foreground mb-4 leading-relaxed">
                 {project.description}
               </p>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-pixel text-xs px-2 py-1 bg-muted text-muted-foreground border border-border"
-                  >
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+              {/* Role */}
+              <p className="font-mono text-xs uppercase tracking-widest text-foreground/50">
+                {project.role}
+              </p>
+            </article>
           ))}
         </div>
-      </div>
-
-      {/* Decorative divider */}
-      <div className="text-center mt-16 font-pixel text-muted-foreground">
-        {"═".repeat(20)} END OF PORTFOLIO {"═".repeat(20)}
       </div>
     </section>
   );

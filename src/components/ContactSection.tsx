@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, MapPin, Send, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Send, ArrowUpRight } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
@@ -15,12 +15,11 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
-      title: "MESSAGE SENT!",
-      description: "Thanks for reaching out. I'll get back to you soon!",
+      title: "Message sent",
+      description: "Thank you for reaching out. I'll respond within 48 hours.",
     });
 
     setFormData({ name: "", email: "", subject: "", message: "" });
@@ -32,106 +31,83 @@ const ContactSection = () => {
   };
 
   const socialLinks = [
-    { label: "IMDB", url: "#" },
-    { label: "LINKEDIN", url: "#" },
-    { label: "SOUNDCLOUD", url: "#" },
-    { label: "VIMEO", url: "#" },
+    { label: "IMDb", url: "#" },
+    { label: "LinkedIn", url: "#" },
+    { label: "SoundCloud", url: "#" },
+    { label: "Vimeo", url: "#" },
   ];
 
   return (
-    <section className="min-h-screen py-20 px-4 bg-background relative starfield">
-      <div className="absolute inset-0 scanlines pointer-events-none opacity-50" />
-      
-      <div className="container mx-auto max-w-4xl relative z-10">
+    <section className="min-h-screen py-32 px-6 bg-background relative">
+      <div className="container mx-auto max-w-4xl">
         {/* Section header */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-[2px] w-16 bg-gradient-to-r from-transparent to-border" />
-            <span className="font-pixel text-sm text-muted-foreground">{"<<<"}</span>
-            <h2 className="font-arcade text-xl md:text-2xl text-accent neon-text-green">
-              CONTACT
-            </h2>
-            <span className="font-pixel text-sm text-muted-foreground">{">>>"}</span>
-            <div className="h-[2px] w-16 bg-gradient-to-l from-transparent to-border" />
-          </div>
-          <p className="font-pixel text-lg text-muted-foreground">
-            LET'S CREATE SOMETHING AMAZING TOGETHER
+        <div className="mb-20">
+          <p className="font-mono text-sm uppercase tracking-[0.3em] text-accent mb-4">
+            Get in Touch
           </p>
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
+            Contact
+          </h2>
+          <div className="gradient-line max-w-xs" />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact info */}
-          <div className="space-y-6">
-            <div className="retro-card animate-fade-in">
-              <h3 className="font-arcade text-sm text-primary neon-text-cyan mb-4">
-                {">>>"} GET IN TOUCH
+          <div className="space-y-12">
+            <div className="animate-fade-in">
+              <h3 className="font-mono text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">
+                Direct
               </h3>
               
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
+                <a href="mailto:hello@matiaslaney.com" className="flex items-center gap-4 group">
                   <Mail className="w-5 h-5 text-primary" />
-                  <span className="font-pixel text-lg text-foreground">
+                  <span className="font-mono text-foreground group-hover:text-primary transition-colors duration-300">
                     hello@matiaslaney.com
                   </span>
-                </div>
-                <div className="flex items-center gap-3">
+                </a>
+                <div className="flex items-center gap-4">
                   <MapPin className="w-5 h-5 text-secondary" />
-                  <span className="font-pixel text-lg text-foreground">
+                  <span className="font-mono text-foreground">
                     New York City, USA
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="retro-card animate-fade-in" style={{ animationDelay: "100ms" }}>
-              <h3 className="font-arcade text-sm text-secondary neon-text-pink mb-4">
-                {">>>"} FOLLOW ME
+            <div className="animate-fade-in stagger-1">
+              <h3 className="font-mono text-sm uppercase tracking-[0.3em] text-muted-foreground mb-6">
+                Profiles
               </h3>
               
-              <div className="grid grid-cols-2 gap-2">
+              <div className="flex flex-wrap gap-4">
                 {socialLinks.map((link) => (
                   <a
                     key={link.label}
                     href={link.url}
-                    className="retro-button flex items-center justify-center gap-2 text-xs"
+                    className="flex items-center gap-2 font-mono text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
                     {link.label}
-                    <ExternalLink className="w-3 h-3" />
+                    <ArrowUpRight className="w-3 h-3" />
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* Guestbook teaser */}
-            <div className="retro-card animate-fade-in" style={{ animationDelay: "200ms" }}>
-              <div className="text-center">
-                <span className="font-pixel text-sm text-neon-yellow blink">★</span>
-                <span className="font-pixel text-sm text-muted-foreground mx-2">
-                  SIGN MY GUESTBOOK
-                </span>
-                <span className="font-pixel text-sm text-neon-yellow blink">★</span>
-                <p className="font-pixel text-xs text-muted-foreground mt-2">
-                  (coming soon...)
-                </p>
-              </div>
+            <div className="animate-fade-in stagger-2">
+              <p className="font-mono text-sm text-muted-foreground leading-relaxed">
+                Currently accepting select projects for 2025. 
+                For urgent inquiries, please indicate in your message.
+              </p>
             </div>
           </div>
 
           {/* Contact form */}
-          <div className="retro-card animate-fade-in" style={{ animationDelay: "150ms" }}>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-3 h-3 bg-destructive" />
-              <div className="w-3 h-3 bg-neon-yellow" />
-              <div className="w-3 h-3 bg-accent" />
-              <span className="font-pixel text-xs text-muted-foreground ml-2">
-                new_message.exe
-              </span>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="pro-card animate-fade-in stagger-2">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="font-pixel text-sm text-muted-foreground block mb-2">
-                  {">"} YOUR NAME:
+                <label className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-2">
+                  Name
                 </label>
                 <input
                   type="text"
@@ -139,14 +115,14 @@ const ContactSection = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full bg-muted border-2 border-border p-3 font-pixel text-foreground focus:border-primary focus:outline-none transition-colors"
-                  placeholder="Enter your name..."
+                  className="w-full bg-muted/50 border border-border px-4 py-3 font-mono text-sm text-foreground focus:border-primary focus:outline-none transition-colors duration-300"
+                  placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label className="font-pixel text-sm text-muted-foreground block mb-2">
-                  {">"} YOUR EMAIL:
+                <label className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-2">
+                  Email
                 </label>
                 <input
                   type="email"
@@ -154,34 +130,34 @@ const ContactSection = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-muted border-2 border-border p-3 font-pixel text-foreground focus:border-primary focus:outline-none transition-colors"
+                  className="w-full bg-muted/50 border border-border px-4 py-3 font-mono text-sm text-foreground focus:border-primary focus:outline-none transition-colors duration-300"
                   placeholder="your@email.com"
                 />
               </div>
 
               <div>
-                <label className="font-pixel text-sm text-muted-foreground block mb-2">
-                  {">"} PROJECT TYPE:
+                <label className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-2">
+                  Project Type
                 </label>
                 <select
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full bg-muted border-2 border-border p-3 font-pixel text-foreground focus:border-primary focus:outline-none transition-colors"
+                  className="w-full bg-muted/50 border border-border px-4 py-3 font-mono text-sm text-foreground focus:border-primary focus:outline-none transition-colors duration-300"
                 >
-                  <option value="">Select a category...</option>
+                  <option value="">Select category</option>
                   <option value="commercial">Commercial / Advertising</option>
-                  <option value="film">Film / TV</option>
+                  <option value="film">Film / Television</option>
                   <option value="documentary">Documentary</option>
                   <option value="soundart">Sound Art / Installation</option>
-                  <option value="other">Other / General Inquiry</option>
+                  <option value="other">Other</option>
                 </select>
               </div>
 
               <div>
-                <label className="font-pixel text-sm text-muted-foreground block mb-2">
-                  {">"} YOUR MESSAGE:
+                <label className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-2">
+                  Message
                 </label>
                 <textarea
                   name="message"
@@ -189,7 +165,7 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full bg-muted border-2 border-border p-3 font-pixel text-foreground focus:border-primary focus:outline-none transition-colors resize-none"
+                  className="w-full bg-muted/50 border border-border px-4 py-3 font-mono text-sm text-foreground focus:border-primary focus:outline-none transition-colors duration-300 resize-none"
                   placeholder="Tell me about your project..."
                 />
               </div>
@@ -197,15 +173,13 @@ const ContactSection = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="retro-button w-full flex items-center justify-center gap-2 text-base py-4"
+                className="pro-button-filled w-full flex items-center justify-center gap-3"
               >
                 {isSubmitting ? (
-                  <>
-                    <span className="animate-spin">◐</span> SENDING...
-                  </>
+                  "Sending..."
                 ) : (
                   <>
-                    <Send className="w-4 h-4" /> SEND MESSAGE
+                    Send Message <Send className="w-4 h-4" />
                   </>
                 )}
               </button>

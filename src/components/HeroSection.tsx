@@ -1,104 +1,66 @@
-import { useEffect, useState } from "react";
-import { ChevronDown, Zap } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 interface HeroSectionProps {
   onScrollToPortfolio: () => void;
 }
 
 const HeroSection = ({ onScrollToPortfolio }: HeroSectionProps) => {
-  const [visitorCount, setVisitorCount] = useState(0);
-
-  useEffect(() => {
-    // Fake visitor counter incrementing
-    const randomStart = Math.floor(Math.random() * 10000) + 50000;
-    setVisitorCount(randomStart);
-    
-    const interval = setInterval(() => {
-      setVisitorCount(prev => prev + Math.floor(Math.random() * 3));
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative starfield grid-bg overflow-hidden">
-      {/* Scanlines overlay */}
-      <div className="absolute inset-0 scanlines pointer-events-none" />
-
-      {/* Marquee banner */}
-      <div className="absolute top-20 left-0 right-0 overflow-hidden bg-muted/50 py-2 border-y-2 border-border">
-        <div className="marquee whitespace-nowrap font-pixel text-lg text-secondary">
-          ★ WELCOME TO MATIAS LANEY'S SOUND DESIGN PORTFOLIO ★ PROFESSIONAL AUDIO FOR FILM, TV & ADVERTISING ★ 
-          NOW ACCEPTING NEW PROJECTS ★ AWARD-WINNING SOUND DESIGNER ★ 
-        </div>
-      </div>
+    <section className="min-h-screen flex flex-col items-center justify-center relative noise-overlay">
+      {/* Subtle grid background */}
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
 
       {/* Main content */}
-      <div className="text-center px-4 z-10">
-        {/* Under construction gif aesthetic */}
-        <div className="flex justify-center gap-4 mb-6">
-          <Zap className="w-8 h-8 text-neon-yellow animate-pulse" />
-          <span className="font-arcade text-[10px] text-neon-yellow blink">NEW!</span>
-          <Zap className="w-8 h-8 text-neon-yellow animate-pulse" />
-        </div>
-
+      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         {/* Title */}
-        <h1 className="font-arcade text-2xl md:text-4xl lg:text-5xl text-primary neon-text-cyan mb-4 glitch">
-          MATIAS LANEY
+        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 animate-fade-in tracking-tight">
+          Matias Laney
         </h1>
         
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="h-[2px] w-16 md:w-32 bg-gradient-to-r from-transparent to-primary" />
-          <span className="font-pixel text-2xl md:text-3xl text-secondary neon-text-pink">
-            SOUND DESIGNER
-          </span>
-          <div className="h-[2px] w-16 md:w-32 bg-gradient-to-l from-transparent to-primary" />
-        </div>
-
-        {/* Tagline */}
-        <p className="font-pixel text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8">
-          Crafting immersive audio experiences for<br />
-          <span className="text-accent neon-text-green">COMMERCIALS</span> • 
-          <span className="text-secondary neon-text-pink"> FILMS</span> • 
-          <span className="text-primary neon-text-cyan"> DOCUMENTARIES</span> • 
-          <span className="text-neon-yellow text-glow"> SOUND ART</span>
+        {/* Subtitle */}
+        <p className="font-mono text-lg md:text-xl text-primary uppercase tracking-[0.3em] mb-8 animate-fade-in stagger-1 glow-text-subtle">
+          Sound Designer
         </p>
+
+        {/* Gradient line */}
+        <div className="gradient-line max-w-md mx-auto mb-12 animate-fade-in stagger-2" />
+
+        {/* Description */}
+        <p className="font-mono text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in stagger-2">
+          Crafting immersive audio experiences for film, television, advertising, 
+          and contemporary art installations.
+        </p>
+
+        {/* Categories */}
+        <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-16 animate-fade-in stagger-3">
+          <span className="font-mono text-sm uppercase tracking-widest text-primary">Commercials</span>
+          <span className="font-mono text-sm text-muted-foreground/50">•</span>
+          <span className="font-mono text-sm uppercase tracking-widest text-secondary">Films</span>
+          <span className="font-mono text-sm text-muted-foreground/50">•</span>
+          <span className="font-mono text-sm uppercase tracking-widest text-accent">Documentaries</span>
+          <span className="font-mono text-sm text-muted-foreground/50">•</span>
+          <span className="font-mono text-sm uppercase tracking-widest text-foreground/70">Sound Art</span>
+        </div>
 
         {/* CTA Button */}
         <button 
           onClick={onScrollToPortfolio}
-          className="retro-button text-lg px-8 py-4 mb-12 animate-float"
+          className="pro-button animate-fade-in stagger-4"
         >
-          {">>>"} EXPLORE PORTFOLIO {"<<<"}
+          View Selected Work
         </button>
-
-        {/* Visitor counter */}
-        <div className="retro-card inline-block">
-          <div className="flex items-center gap-2">
-            <span className="font-pixel text-sm text-muted-foreground">VISITORS:</span>
-            <span className="font-arcade text-xs text-accent neon-text-green">
-              {visitorCount.toLocaleString()}
-            </span>
-          </div>
-        </div>
       </div>
 
       {/* Scroll indicator */}
       <button 
         onClick={onScrollToPortfolio}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors duration-300"
       >
-        <ChevronDown className="w-8 h-8 text-primary" />
+        <ChevronDown className="w-6 h-6 animate-bounce" />
       </button>
-
-      {/* Corner decorations */}
-      <div className="absolute top-24 left-4 font-pixel text-xs text-muted-foreground hidden md:block">
-        [BEST VIEWED WITH<br />
-        SOUND ON]
-      </div>
-      <div className="absolute top-24 right-4 font-pixel text-xs text-muted-foreground hidden md:block text-right">
-        [EST. 2024]
-      </div>
     </section>
   );
 };
