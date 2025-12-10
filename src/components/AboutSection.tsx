@@ -1,103 +1,104 @@
 const AboutSection = () => {
-  const clients = [
-    "Nike", "A24", "HBO", "Netflix", "Nat Geo", 
-    "Apple", "Sony", "MoMA", "Coca-Cola", "Paramount"
-  ];
+  const clients = ["NIKE", "A24", "HBO", "NETFLIX", "NAT GEO", "APPLE", "SONY", "MOMA", "COCA-COLA", "PARAMOUNT"];
 
   return (
-    <section className="py-24 px-6 lg:px-12 bg-card relative grain">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-24">
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4 animate-in">
-            Info
-          </p>
-          <h2 className="font-serif text-6xl md:text-8xl italic text-foreground animate-in delay-1">
-            About
-          </h2>
-        </div>
+    <section className="py-16 px-4 bg-secondary text-secondary-foreground border-t-4 border-foreground relative overflow-hidden">
+      {/* Background chaos */}
+      <div className="absolute top-[10%] right-[5%] font-display text-[30vw] text-foreground/5 leading-none pointer-events-none">
+        ?!
+      </div>
 
-        {/* Two column layout */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left - Bio */}
-          <div className="space-y-8 animate-in delay-2">
-            <p className="font-serif text-3xl md:text-4xl italic leading-snug text-foreground">
-              I believe sound is the invisible architecture of emotion.
+      {/* Header */}
+      <div className="mb-16">
+        <p className="font-mono text-sm uppercase tracking-widest text-secondary-foreground/60 mb-2">
+          [ Info ]
+        </p>
+        <h2 className="font-display text-huge text-secondary-foreground">
+          ABOUT
+        </h2>
+      </div>
+
+      {/* Two columns */}
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 relative z-10">
+        {/* Left - manifesto */}
+        <div>
+          <div className="space-y-6 mb-12">
+            <p className="font-display text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
+              I DON'T MAKE 
+              <span className="bg-primary text-primary-foreground px-2 mx-2">PRETTY</span>
+              SOUNDS.
             </p>
-            <div className="space-y-6 font-mono text-sm text-muted-foreground leading-relaxed">
-              <p>
-                15 years creating sonic experiences for visionary directors, 
-                agencies, and artists who understand that what you hear 
-                shapes what you feel.
-              </p>
-              <p>
-                My work lives in the space between conscious and unconscious 
-                perception—where sound stops being heard and starts being felt.
-              </p>
-              <p>
-                Based in NYC. Working globally. Open to projects that 
-                challenge convention.
-              </p>
-            </div>
+            <p className="font-display text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
+              I MAKE SOUNDS 
+              <span className="bg-foreground text-background px-2 mx-2">THAT HIT.</span>
+            </p>
           </div>
 
-          {/* Right - Stats & Clients */}
-          <div className="space-y-16">
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 animate-in delay-3">
-              <div className="border-l-2 border-primary pl-6">
-                <p className="font-serif text-5xl italic text-foreground mb-2">15+</p>
-                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Years</p>
-              </div>
-              <div className="border-l-2 border-secondary pl-6">
-                <p className="font-serif text-5xl italic text-foreground mb-2">200+</p>
-                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Projects</p>
-              </div>
-              <div className="border-l-2 border-accent pl-6">
-                <p className="font-serif text-5xl italic text-foreground mb-2">50+</p>
-                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Awards</p>
-              </div>
-            </div>
-
-            {/* Clients */}
-            <div className="animate-in delay-4">
-              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-6">
-                Collaborators
-              </p>
-              <div className="flex flex-wrap gap-x-6 gap-y-3">
-                {clients.map((client, i) => (
-                  <span 
-                    key={client} 
-                    className="font-serif text-2xl italic text-foreground/40 hover:text-foreground transition-colors duration-300"
-                  >
-                    {client}
-                    {i < clients.length - 1 && <span className="text-primary ml-6">·</span>}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Recognition */}
-            <div className="animate-in delay-5">
-              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
-                Recognition
-              </p>
-              <p className="font-mono text-sm text-muted-foreground">
-                Emmy Nominations • Clio Awards • Cannes Lions • 
-                D&AD • One Show • Webby Awards
-              </p>
-            </div>
+          <div className="space-y-4 font-mono text-sm leading-relaxed text-secondary-foreground/80">
+            <p>
+              15 years of refusing to play it safe. Every project is a chance to 
+              break something and rebuild it better.
+            </p>
+            <p>
+              If you want background music, find someone else. If you want sound 
+              that makes people stop and feel something—let's talk.
+            </p>
           </div>
         </div>
 
-        {/* Large statement */}
-        <div className="mt-32 pt-16 border-t border-border animate-in delay-6">
-          <p className="font-serif text-4xl md:text-6xl lg:text-7xl italic text-foreground leading-tight">
-            "The best sound design is 
-            <span className="text-stroke-primary"> invisible</span>—you 
-            don't hear it, you <span className="text-primary">feel</span> it."
-          </p>
+        {/* Right - stats & clients */}
+        <div className="space-y-12">
+          {/* Stats - brutal cards */}
+          <div className="grid grid-cols-3 gap-4">
+            <div className="border-4 border-secondary-foreground p-4 bg-primary text-primary-foreground text-center brutal-hover">
+              <p className="font-display text-5xl">15+</p>
+              <p className="font-mono text-xs uppercase">Years</p>
+            </div>
+            <div className="border-4 border-secondary-foreground p-4 bg-accent text-accent-foreground text-center brutal-hover">
+              <p className="font-display text-5xl">200+</p>
+              <p className="font-mono text-xs uppercase">Projects</p>
+            </div>
+            <div className="border-4 border-secondary-foreground p-4 bg-foreground text-background text-center brutal-hover">
+              <p className="font-display text-5xl">50+</p>
+              <p className="font-mono text-xs uppercase">Awards</p>
+            </div>
+          </div>
+
+          {/* Clients */}
+          <div>
+            <p className="font-mono text-sm uppercase tracking-widest text-secondary-foreground/60 mb-4">
+              [ Worked with ]
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {clients.map((client) => (
+                <span
+                  key={client}
+                  className="border-2 border-secondary-foreground/40 px-3 py-1 font-mono text-sm hover:border-secondary-foreground hover:bg-secondary-foreground hover:text-secondary transition-all"
+                >
+                  {client}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Recognition */}
+          <div className="border-l-4 border-primary pl-4">
+            <p className="font-mono text-sm uppercase tracking-widest text-secondary-foreground/60 mb-2">
+              [ Awards ]
+            </p>
+            <p className="font-mono text-sm text-secondary-foreground">
+              Emmy Nom. • Clio • Cannes Lions • D&AD • One Show • Webby
+            </p>
+          </div>
         </div>
+      </div>
+
+      {/* Big quote */}
+      <div className="mt-24 pt-12 border-t-4 border-secondary-foreground/20">
+        <p className="font-display text-3xl md:text-5xl lg:text-6xl text-secondary-foreground/90 max-w-5xl">
+          "THE BEST SOUND DESIGN DOESN'T SAY 'LISTEN TO ME.' IT SAYS 
+          <span className="bg-primary text-primary-foreground px-2 mx-1">FEEL THIS.</span>"
+        </p>
       </div>
     </section>
   );
