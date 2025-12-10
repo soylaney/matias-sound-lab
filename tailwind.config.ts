@@ -14,13 +14,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["Georgia", "Times New Roman", "serif"],
-        sans: ["Verdana", "Geneva", "Tahoma", "sans-serif"],
+        mono: ["IBM Plex Mono", "monospace"],
+        display: ["Space Grotesk", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
-        "border-light": "hsl(var(--border-light))",
-        "border-dark": "hsl(var(--border-dark))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
@@ -52,12 +50,6 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
-        },
-        retro: {
-          cyan: "hsl(var(--retro-cyan))",
-          purple: "hsl(var(--retro-purple))",
-          gold: "hsl(var(--retro-gold))",
-          green: "hsl(var(--retro-green))",
         },
       },
       borderRadius: {
