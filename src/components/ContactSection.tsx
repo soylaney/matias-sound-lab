@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Mail, MapPin, Send, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Send } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    project: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -14,15 +14,12 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     await new Promise((resolve) => setTimeout(resolve, 1500));
-
     toast({
       title: "Message sent",
-      description: "Thank you for reaching out. I'll respond within 48 hours.",
+      description: "I'll be in touch within 48 hours.",
     });
-
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({ name: "", email: "", project: "", message: "" });
     setIsSubmitting(false);
   };
 
@@ -30,7 +27,7 @@ const ContactSection = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const socialLinks = [
+  const links = [
     { label: "IMDb", url: "#" },
     { label: "LinkedIn", url: "#" },
     { label: "SoundCloud", url: "#" },
@@ -38,161 +35,146 @@ const ContactSection = () => {
   ];
 
   return (
-    <section className="py-32 px-6 lg:px-12 bg-background relative">
-      {/* Ambient backgrounds */}
-      <div className="ambient-bg w-[300px] h-[300px] bg-accent bottom-0 right-1/4" />
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section header */}
-        <div className="mb-20">
-          <p className="font-body text-sm text-primary mb-4 tracking-wide animate-fade-in">
-            Get in Touch
+    <section className="py-24 px-6 lg:px-12 bg-background relative grain">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-24">
+          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4 animate-in">
+            Contact
           </p>
-          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6 animate-fade-in stagger-1">
-            Let's create
-            <br />
-            something
+          <h2 className="font-serif text-6xl md:text-8xl italic text-foreground animate-in delay-1">
+            Let's talk
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-20">
-          {/* Contact info */}
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Left - Info */}
           <div className="space-y-12">
-            <div className="animate-fade-in stagger-2">
-              <h3 className="font-display text-lg font-semibold text-foreground mb-6">
-                Direct
-              </h3>
-              
-              <div className="space-y-4">
-                <a href="mailto:hello@matiaslaney.com" className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 flex items-center justify-center bg-muted/30 border border-border group-hover:border-primary/50 transition-colors">
-                    <Mail className="w-4 h-4 text-primary" />
-                  </div>
-                  <span className="font-body text-foreground group-hover:text-primary transition-colors duration-300">
-                    hello@matiaslaney.com
-                  </span>
+            <div className="animate-in delay-2">
+              <p className="font-serif text-2xl md:text-3xl italic text-foreground mb-8">
+                Have a project that needs sonic identity? 
+                An unconventional idea? A vision?
+              </p>
+              <p className="font-mono text-sm text-muted-foreground">
+                I'm selective about projects—looking for collaborators 
+                who value craft and aren't afraid to push boundaries.
+              </p>
+            </div>
+
+            <div className="space-y-6 animate-in delay-3">
+              <a 
+                href="mailto:hello@matiaslaney.com" 
+                className="link-experimental font-serif text-3xl md:text-4xl italic text-foreground inline-block"
+              >
+                hello@matiaslaney.com
+              </a>
+              <p className="font-mono text-sm text-muted-foreground">
+                New York City, USA
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-6 animate-in delay-4">
+              {links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.url}
+                  className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 group"
+                >
+                  {link.label}
+                  <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 flex items-center justify-center bg-muted/30 border border-border">
-                    <MapPin className="w-4 h-4 text-muted-foreground" />
-                  </div>
-                  <span className="font-body text-foreground">
-                    New York City, USA
-                  </span>
-                </div>
-              </div>
+              ))}
             </div>
 
-            <div className="animate-fade-in stagger-3">
-              <h3 className="font-display text-lg font-semibold text-foreground mb-6">
-                Profiles
-              </h3>
-              
-              <div className="flex flex-wrap gap-4">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.url}
-                    className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
-                  >
-                    {link.label}
-                    <ArrowUpRight className="w-3 h-3" />
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div className="animate-fade-in stagger-4">
-              <p className="font-body text-muted-foreground leading-relaxed">
-                Currently accepting select projects for 2025. 
-                For urgent inquiries, please indicate in your message.
+            <div className="pt-8 border-t border-border animate-in delay-5">
+              <p className="font-mono text-xs text-muted-foreground">
+                Currently accepting select projects for 2025.
               </p>
             </div>
           </div>
 
-          {/* Contact form */}
-          <div className="card-minimal animate-fade-in stagger-3">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="font-body text-xs uppercase tracking-wider text-muted-foreground block mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="input-minimal"
-                  placeholder="Your name"
-                />
-              </div>
+          {/* Right - Form */}
+          <form onSubmit={handleSubmit} className="space-y-8 animate-in delay-3">
+            <div>
+              <label className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-4">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="input-raw font-serif text-xl italic"
+                placeholder="Your name"
+              />
+            </div>
 
-              <div>
-                <label className="font-body text-xs uppercase tracking-wider text-muted-foreground block mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="input-minimal"
-                  placeholder="your@email.com"
-                />
-              </div>
+            <div>
+              <label className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-4">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="input-raw font-serif text-xl italic"
+                placeholder="your@email.com"
+              />
+            </div>
 
-              <div>
-                <label className="font-body text-xs uppercase tracking-wider text-muted-foreground block mb-2">
-                  Project Type
-                </label>
-                <select
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="input-minimal"
-                >
-                  <option value="">Select category</option>
-                  <option value="commercial">Commercial / Advertising</option>
-                  <option value="film">Film / Television</option>
-                  <option value="documentary">Documentary</option>
-                  <option value="soundart">Sound Art / Installation</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="font-body text-xs uppercase tracking-wider text-muted-foreground block mb-2">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="input-minimal resize-none"
-                  placeholder="Tell me about your project..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-primary w-full flex items-center justify-center gap-3 disabled:opacity-50"
+            <div>
+              <label className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-4">
+                Project type
+              </label>
+              <select
+                name="project"
+                value={formData.project}
+                onChange={handleChange}
+                required
+                className="input-raw font-serif text-xl italic bg-transparent"
               >
-                {isSubmitting ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    Send Message <Send className="w-4 h-4" />
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
+                <option value="" className="bg-background">Select</option>
+                <option value="film" className="bg-background">Film / TV</option>
+                <option value="commercial" className="bg-background">Commercial</option>
+                <option value="documentary" className="bg-background">Documentary</option>
+                <option value="art" className="bg-background">Sound Art / Installation</option>
+                <option value="other" className="bg-background">Something else</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="font-mono text-xs uppercase tracking-widest text-muted-foreground block mb-4">
+                Tell me about it
+              </label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={4}
+                className="input-raw font-serif text-xl italic resize-none"
+                placeholder="What are we making?"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="group w-full py-6 bg-foreground text-background font-mono text-sm uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors disabled:opacity-50 flex items-center justify-center gap-3"
+            >
+              {isSubmitting ? (
+                "Sending..."
+              ) : (
+                <>
+                  Send it
+                  <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </>
+              )}
+            </button>
+          </form>
         </div>
       </div>
     </section>

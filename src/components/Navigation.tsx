@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
 
 interface NavigationProps {
   onNavigate: (section: string) => void;
@@ -9,9 +8,9 @@ const Navigation = ({ onNavigate }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: "Work", section: "portfolio" },
-    { label: "About", section: "about" },
-    { label: "Contact", section: "contact" },
+    { label: "Work", section: "portfolio", num: "01" },
+    { label: "Info", section: "about", num: "02" },
+    { label: "Say hi", section: "contact", num: "03" },
   ];
 
   const handleNav = (section: string) => {
@@ -20,46 +19,51 @@ const Navigation = ({ onNavigate }: NavigationProps) => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-20">
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
+        <div className="flex items-center justify-between px-6 lg:px-12 h-24">
           <button onClick={() => handleNav("home")} className="group">
-            <span className="font-display text-xl font-semibold tracking-tight text-foreground transition-colors duration-300 group-hover:text-primary">
-              Matias Laney
+            <span className="font-serif text-2xl italic text-foreground">
+              ML
             </span>
           </button>
 
-          <div className="hidden md:flex items-center gap-12">
-            {navItems.map((item) => (
-              <button
-                key={item.section}
-                onClick={() => handleNav(item.section)}
-                className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 relative group"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
-              </button>
-            ))}
-          </div>
-
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-2 text-foreground hover:text-primary transition-colors">
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="font-mono text-xs uppercase tracking-widest text-foreground hover:text-primary transition-colors"
+          >
+            {isOpen ? "Close" : "Menu"}
           </button>
         </div>
+      </nav>
 
-        {isOpen && (
-          <div className="md:hidden border-t border-border py-8 animate-fade-up">
-            <div className="flex flex-col gap-6">
-              {navItems.map((item) => (
-                <button key={item.section} onClick={() => handleNav(item.section)} className="font-body text-lg text-muted-foreground hover:text-foreground transition-colors text-left">
+      {/* Full screen menu */}
+      <div
+        className={`fixed inset-0 z-40 bg-background transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isOpen ? "translate-y-0" : "-translate-y-full"
+        }`}
+      >
+        <div className="h-full flex flex-col justify-center px-12 lg:px-24">
+          {navItems.map((item, i) => (
+            <button
+              key={item.section}
+              onClick={() => handleNav(item.section)}
+              className="group text-left py-4 border-b border-border"
+              style={{ transitionDelay: isOpen ? `${i * 100}ms` : "0ms" }}
+            >
+              <div className="flex items-baseline gap-6">
+                <span className="font-mono text-xs text-muted-foreground">
+                  {item.num}
+                </span>
+                <span className="font-serif text-6xl md:text-8xl lg:text-9xl italic text-foreground group-hover:text-primary transition-colors duration-300">
                   {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
-    </nav>
+    </>
   );
 };
 

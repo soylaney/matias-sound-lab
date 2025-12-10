@@ -1,100 +1,102 @@
 const AboutSection = () => {
-  const expertise = [
-    "Pro Tools", "Ableton Live", "Logic Pro", "Dolby Atmos",
-    "Foley Recording", "Field Recording", "5.1/7.1 Mixing",
-    "ADR", "Sound Effects Design", "Music Composition"
-  ];
-
   const clients = [
-    "Nike", "Coca-Cola", "A24", "HBO", "Netflix", 
-    "National Geographic", "Apple", "Sony", "Warner Bros", "MoMA"
+    "Nike", "A24", "HBO", "Netflix", "Nat Geo", 
+    "Apple", "Sony", "MoMA", "Coca-Cola", "Paramount"
   ];
 
   return (
-    <section className="py-32 px-6 lg:px-12 bg-card/30 relative">
-      {/* Ambient backgrounds */}
-      <div className="ambient-bg w-[400px] h-[400px] bg-primary top-1/3 -left-32" />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-20">
-          {/* Left column - Bio */}
-          <div>
-            <p className="font-body text-sm text-primary mb-4 tracking-wide animate-fade-in">
-              About
+    <section className="py-24 px-6 lg:px-12 bg-card relative grain">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-24">
+          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4 animate-in">
+            Info
+          </p>
+          <h2 className="font-serif text-6xl md:text-8xl italic text-foreground animate-in delay-1">
+            About
+          </h2>
+        </div>
+
+        {/* Two column layout */}
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Left - Bio */}
+          <div className="space-y-8 animate-in delay-2">
+            <p className="font-serif text-3xl md:text-4xl italic leading-snug text-foreground">
+              I believe sound is the invisible architecture of emotion.
             </p>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-8 animate-fade-in stagger-1">
-              Sound tells
-              <br />
-              the story
-            </h2>
-            
-            <div className="space-y-6 font-body text-muted-foreground leading-relaxed animate-fade-in stagger-2">
+            <div className="space-y-6 font-mono text-sm text-muted-foreground leading-relaxed">
               <p>
-                I'm a sound designer based in New York City with over 15 years of experience 
-                crafting audio for visual media. My journey began in underground music scenes, 
-                where I learned that sound has the power to transform reality.
+                15 years creating sonic experiences for visionary directors, 
+                agencies, and artists who understand that what you hear 
+                shapes what you feel.
               </p>
               <p>
-                Today, I bring that experimental spirit to commercial and artistic projects alike. 
-                Whether it's the subtle ambiance of a documentary, the explosive soundscapes of 
-                a blockbuster, or the innovative textures of a gallery installation, I approach 
-                each project as a unique sonic universe waiting to be discovered.
+                My work lives in the space between conscious and unconscious 
+                perception—where sound stops being heard and starts being felt.
               </p>
               <p>
-                My work has been recognized with Emmy nominations, Clio Awards, and installations 
-                at major cultural institutions worldwide.
+                Based in NYC. Working globally. Open to projects that 
+                challenge convention.
               </p>
             </div>
           </div>
 
-          {/* Right column - Skills & Clients */}
+          {/* Right - Stats & Clients */}
           <div className="space-y-16">
-            {/* Expertise */}
-            <div className="animate-fade-in stagger-3">
-              <h3 className="font-display text-lg font-semibold text-foreground mb-6">
-                Expertise
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {expertise.map((skill) => (
-                  <span
-                    key={skill}
-                    className="font-body text-sm px-4 py-2 bg-muted/30 text-foreground/80 border border-border hover:border-primary/50 hover:text-foreground transition-all duration-300"
-                  >
-                    {skill}
-                  </span>
-                ))}
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-8 animate-in delay-3">
+              <div className="border-l-2 border-primary pl-6">
+                <p className="font-serif text-5xl italic text-foreground mb-2">15+</p>
+                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Years</p>
+              </div>
+              <div className="border-l-2 border-secondary pl-6">
+                <p className="font-serif text-5xl italic text-foreground mb-2">200+</p>
+                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Projects</p>
+              </div>
+              <div className="border-l-2 border-accent pl-6">
+                <p className="font-serif text-5xl italic text-foreground mb-2">50+</p>
+                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Awards</p>
               </div>
             </div>
 
             {/* Clients */}
-            <div className="animate-fade-in stagger-4">
-              <h3 className="font-display text-lg font-semibold text-foreground mb-6">
-                Selected Clients
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {clients.map((client) => (
-                  <span
-                    key={client}
-                    className="font-body text-muted-foreground/60 hover:text-foreground transition-colors duration-300"
+            <div className="animate-in delay-4">
+              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-6">
+                Collaborators
+              </p>
+              <div className="flex flex-wrap gap-x-6 gap-y-3">
+                {clients.map((client, i) => (
+                  <span 
+                    key={client} 
+                    className="font-serif text-2xl italic text-foreground/40 hover:text-foreground transition-colors duration-300"
                   >
                     {client}
+                    {i < clients.length - 1 && <span className="text-primary ml-6">·</span>}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* CTA */}
-            <div className="animate-fade-in stagger-5">
-              <div className="card-minimal">
-                <p className="font-body text-foreground mb-4">
-                  Available for select projects in 2025
-                </p>
-                <p className="font-body text-sm text-muted-foreground">
-                  Let's discuss how we can bring your vision to life through sound.
-                </p>
-              </div>
+            {/* Recognition */}
+            <div className="animate-in delay-5">
+              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
+                Recognition
+              </p>
+              <p className="font-mono text-sm text-muted-foreground">
+                Emmy Nominations • Clio Awards • Cannes Lions • 
+                D&AD • One Show • Webby Awards
+              </p>
             </div>
           </div>
+        </div>
+
+        {/* Large statement */}
+        <div className="mt-32 pt-16 border-t border-border animate-in delay-6">
+          <p className="font-serif text-4xl md:text-6xl lg:text-7xl italic text-foreground leading-tight">
+            "The best sound design is 
+            <span className="text-stroke-primary"> invisible</span>—you 
+            don't hear it, you <span className="text-primary">feel</span> it."
+          </p>
         </div>
       </div>
     </section>
