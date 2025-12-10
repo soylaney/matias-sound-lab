@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <span className="font-display text-3xl">MATIAS LANEY</span>
         <p className="font-mono text-xs uppercase tracking-widest">
-          © {currentYear} • Sound Design • NYC • Not your average audio guy
+          © {currentYear} • Sound Design • Barcelona • Not your average audio guy
         </p>
         <span className="sticker rotate-[8deg]">Available 2025</span>
       </div>

@@ -57,7 +57,7 @@ const Navigation = ({ onNavigate }: NavigationProps) => {
           
           {/* Random decorative elements */}
           <div className="absolute top-[60%] left-[5%] font-mono text-xs text-primary-foreground/50 rotate-90">
-            SOUND DESIGNER NYC
+            SOUND DESIGNER BCN
           </div>
           <div className="absolute bottom-[40%] right-[15%] border-4 border-primary-foreground w-24 h-24 rotate-12" />
           <div className="absolute top-[25%] right-[30%] w-16 h-16 bg-foreground rotate-45" />
