@@ -39,17 +39,6 @@ const HeroSection = ({ onScrollToPortfolio }: HeroSectionProps) => {
 
       {/* Bottom section */}
       <div className="absolute bottom-0 left-0 right-0">
-        {/* Marquee */}
-        <div className="marquee-fast bg-foreground text-background py-3 border-y-4 border-foreground">
-          <div className="marquee-fast-content">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <span key={i} className="font-display text-2xl uppercase mx-4 whitespace-nowrap">
-                FILM ★ COMMERCIALS ★ DOCUMENTARY ★ SOUND ART ★ INSTALLATION ★ 
-              </span>
-            ))}
-          </div>
-        </div>
-
         {/* Info bar */}
         <div className="bg-background border-t-4 border-foreground px-4 py-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-8">
