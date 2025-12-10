@@ -75,7 +75,7 @@ const ContactSection = () => {
 
           <div className="border-l-4 border-primary pl-4">
             <p className="font-mono text-sm text-muted-foreground">
-              Based in NYC • Working globally<br />
+              Based in Barcelona • Working globally<br />
               Accepting select projects for 2025
             </p>
           </div>

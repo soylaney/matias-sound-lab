@@ -26,7 +26,7 @@ const HeroSection = ({ onScrollToPortfolio }: HeroSectionProps) => {
 
           {/* Overlapping elements */}
           <div className="absolute top-[10%] right-[5%] sticker animate-in delay-4">
-            NYC BASED
+            BCN BASED
           </div>
           <div className="absolute top-[35%] right-[15%] stamp text-foreground animate-in delay-5">
             15+ YEARS
@@ -57,7 +57,7 @@ const HeroSection = ({ onScrollToPortfolio }: HeroSectionProps) => {
               <span className="text-muted-foreground">Designer:</span> Matias Laney
             </p>
             <p className="font-mono text-sm uppercase">
-              <span className="text-muted-foreground">Location:</span> New York City
+              <span className="text-muted-foreground">Location:</span> Barcelona
             </p>
           </div>
           <button
