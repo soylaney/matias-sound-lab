@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { X } from "lucide-react";
 
 interface NavigationProps {
   onNavigate: (section: string) => void;
@@ -7,12 +8,6 @@ interface NavigationProps {
 const Navigation = ({ onNavigate }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
-    { label: "Work", section: "portfolio", num: "01" },
-    { label: "Info", section: "about", num: "02" },
-    { label: "Say hi", section: "contact", num: "03" },
-  ];
-
   const handleNav = (section: string) => {
     onNavigate(section);
     setIsOpen(false);
@@ -20,48 +15,60 @@ const Navigation = ({ onNavigate }: NavigationProps) => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
-        <div className="flex items-center justify-between px-6 lg:px-12 h-24">
-          <button onClick={() => handleNav("home")} className="group">
-            <span className="font-serif text-2xl italic text-foreground">
-              ML
-            </span>
-          </button>
+      {/* Fixed corner elements */}
+      <div className="fixed top-4 left-4 z-50">
+        <button 
+          onClick={() => handleNav("home")}
+          className="font-display text-4xl text-foreground hover:text-primary transition-colors"
+        >
+          ML*
+        </button>
+      </div>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="font-mono text-xs uppercase tracking-widest text-foreground hover:text-primary transition-colors"
-          >
-            {isOpen ? "Close" : "Menu"}
-          </button>
-        </div>
-      </nav>
-
-      {/* Full screen menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-background transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          isOpen ? "translate-y-0" : "-translate-y-full"
-        }`}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed top-4 right-4 z-50 border-4 border-foreground bg-background px-4 py-2 font-mono text-sm uppercase tracking-widest brutal-hover"
       >
-        <div className="h-full flex flex-col justify-center px-12 lg:px-24">
-          {navItems.map((item, i) => (
-            <button
-              key={item.section}
-              onClick={() => handleNav(item.section)}
-              className="group text-left py-4 border-b border-border"
-              style={{ transitionDelay: isOpen ? `${i * 100}ms` : "0ms" }}
-            >
-              <div className="flex items-baseline gap-6">
-                <span className="font-mono text-xs text-muted-foreground">
-                  {item.num}
-                </span>
-                <span className="font-serif text-6xl md:text-8xl lg:text-9xl italic text-foreground group-hover:text-primary transition-colors duration-300">
-                  {item.label}
-                </span>
-              </div>
-            </button>
-          ))}
+        {isOpen ? <X className="w-5 h-5" /> : "Menu"}
+      </button>
+
+      {/* Chaotic fullscreen menu */}
+      {isOpen && (
+        <div className="fixed inset-0 z-40 bg-primary overflow-hidden">
+          {/* Scattered nav items */}
+          <button
+            onClick={() => handleNav("portfolio")}
+            className="absolute top-[15%] left-[10%] font-display text-[15vw] text-primary-foreground hover:text-foreground transition-colors rotate-[-8deg]"
+          >
+            WORK
+          </button>
+          <button
+            onClick={() => handleNav("about")}
+            className="absolute top-[40%] right-[5%] font-display text-[12vw] text-primary-foreground hover:text-foreground transition-colors rotate-[5deg]"
+          >
+            ABOUT
+          </button>
+          <button
+            onClick={() => handleNav("contact")}
+            className="absolute bottom-[15%] left-[20%] font-display text-[18vw] text-primary-foreground hover:text-foreground transition-colors rotate-[-3deg]"
+          >
+            SAY HI
+          </button>
+          
+          {/* Random decorative elements */}
+          <div className="absolute top-[60%] left-[5%] font-mono text-xs text-primary-foreground/50 rotate-90">
+            SOUND DESIGNER NYC
+          </div>
+          <div className="absolute bottom-[40%] right-[15%] border-4 border-primary-foreground w-24 h-24 rotate-12" />
+          <div className="absolute top-[25%] right-[30%] w-16 h-16 bg-foreground rotate-45" />
         </div>
+      )}
+
+      {/* Side text */}
+      <div className="fixed left-4 top-1/2 -translate-y-1/2 z-30 hidden lg:block">
+        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground -rotate-90 origin-center whitespace-nowrap">
+          Sound Designer — Est. 2009
+        </p>
       </div>
     </>
   );

@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["Instrument Serif", "serif"],
+        display: ["Bebas Neue", "sans-serif"],
         mono: ["Space Mono", "monospace"],
       },
       colors: {

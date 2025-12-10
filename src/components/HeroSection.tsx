@@ -1,61 +1,71 @@
-import { ArrowDownRight } from "lucide-react";
-
 interface HeroSectionProps {
   onScrollToPortfolio: () => void;
 }
 
 const HeroSection = ({ onScrollToPortfolio }: HeroSectionProps) => {
   return (
-    <section className="min-h-screen flex flex-col relative overflow-hidden grain">
-      {/* Main content */}
-      <div className="flex-1 flex flex-col justify-end px-6 lg:px-12 pb-12">
-        {/* Giant title */}
-        <div className="mb-12">
-          <h1 className="font-serif text-[15vw] md:text-[12vw] leading-[0.85] tracking-tight animate-in">
-            <span className="block text-foreground">Sound</span>
-            <span className="block italic text-stroke">Design</span>
+    <section className="min-h-screen relative overflow-hidden bg-background">
+      {/* Giant stacked typography */}
+      <div className="pt-32 px-4">
+        <div className="relative">
+          {/* Main title - chaotic stack */}
+          <h1 className="font-display text-massive leading-[0.75] tracking-tight">
+            <span className="block text-foreground rotate-text" style={{ marginLeft: '-2%' }}>
+              SOUND
+            </span>
+            <span className="block text-primary rotate-text" style={{ animationDelay: '0.1s', marginLeft: '5%' }}>
+              IS
+            </span>
+            <span className="block text-foreground rotate-text" style={{ animationDelay: '0.2s', marginLeft: '-1%' }}>
+              NOT
+            </span>
+            <span className="block text-secondary rotate-text" style={{ animationDelay: '0.3s', marginLeft: '8%' }}>
+              NOISE
+            </span>
           </h1>
-        </div>
 
-        {/* Bottom row */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-t border-border pt-8">
-          <div className="space-y-4 animate-in delay-2">
-            <p className="font-mono text-sm uppercase tracking-widest text-muted-foreground">
-              Matias Laney
-            </p>
-            <p className="font-serif text-2xl md:text-3xl italic text-foreground max-w-md">
-              Crafting sonic worlds for those who dare to listen differently.
-            </p>
+          {/* Overlapping elements */}
+          <div className="absolute top-[10%] right-[5%] sticker animate-in delay-4">
+            NYC BASED
           </div>
-
-          <div className="flex items-end gap-12 animate-in delay-3">
-            <div>
-              <p className="font-mono text-xs text-muted-foreground mb-2">Based in</p>
-              <p className="font-serif text-xl italic">NYC</p>
-            </div>
-            <div>
-              <p className="font-mono text-xs text-muted-foreground mb-2">Since</p>
-              <p className="font-serif text-xl italic">2009</p>
-            </div>
-            <button
-              onClick={onScrollToPortfolio}
-              className="group flex items-center gap-2 font-mono text-sm uppercase tracking-widest text-foreground hover:text-primary transition-colors"
-            >
-              <span>Enter</span>
-              <ArrowDownRight className="w-4 h-4 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
-            </button>
+          <div className="absolute top-[35%] right-[15%] stamp text-foreground animate-in delay-5">
+            15+ YEARS
+          </div>
+          <div className="absolute bottom-[20%] left-[60%] bg-accent text-accent-foreground px-6 py-3 font-mono text-sm uppercase rotate-[-6deg] animate-in delay-6">
+            200+ Projects
           </div>
         </div>
       </div>
 
-      {/* Scrolling marquee */}
-      <div className="marquee border-t border-b border-border py-4 bg-primary text-primary-foreground">
-        <div className="marquee-content">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <span key={i} className="font-mono text-sm uppercase tracking-widest mx-8 whitespace-nowrap">
-              Film • Commercials • Documentary • Sound Art • Installation • Experience Design •
-            </span>
-          ))}
+      {/* Bottom section */}
+      <div className="absolute bottom-0 left-0 right-0">
+        {/* Marquee */}
+        <div className="marquee-fast bg-foreground text-background py-3 border-y-4 border-foreground">
+          <div className="marquee-fast-content">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <span key={i} className="font-display text-2xl uppercase mx-4 whitespace-nowrap">
+                FILM ★ COMMERCIALS ★ DOCUMENTARY ★ SOUND ART ★ INSTALLATION ★ 
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Info bar */}
+        <div className="bg-background border-t-4 border-foreground px-4 py-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-center gap-8">
+            <p className="font-mono text-sm uppercase">
+              <span className="text-muted-foreground">Designer:</span> Matias Laney
+            </p>
+            <p className="font-mono text-sm uppercase">
+              <span className="text-muted-foreground">Location:</span> New York City
+            </p>
+          </div>
+          <button
+            onClick={onScrollToPortfolio}
+            className="border-4 border-foreground bg-primary text-primary-foreground px-8 py-4 font-display text-2xl uppercase brutal-hover"
+          >
+            SEE THE WORK →
+          </button>
         </div>
       </div>
     </section>
