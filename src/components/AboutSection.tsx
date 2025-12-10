@@ -1,5 +1,5 @@
 const AboutSection = () => {
-  const clients = ["NIKE", "A24", "HBO", "NETFLIX", "NAT GEO", "APPLE", "SONY", "MOMA", "COCA-COLA", "PARAMOUNT"];
+  const clients = ["BUDWEISER", "AMAZON", "HEINEKEN", "FEDEX", "HASBRO", "GEICO", "ADIDAS", "KIA", "MERCEDES BENZ", "TOYOTA", "AMAZON PRIME VIDEO", "MAX", "PEACOCK"];
 
   return (
     <section className="py-16 px-4 bg-secondary text-secondary-foreground border-t-4 border-foreground relative overflow-hidden">
@@ -40,8 +40,8 @@ const AboutSection = () => {
               break something and rebuild it better.
             </p>
             <p>
-              If you want background music, find someone else. If you want sound 
-              that makes people stop and feel something—let's talk.
+              Based in Barcelona. If you want background music, find someone else. 
+              If you want sound that makes people stop and feel something—let's talk.
             </p>
           </div>
         </div>
@@ -49,7 +49,7 @@ const AboutSection = () => {
         {/* Right - stats & clients */}
         <div className="space-y-12">
           {/* Stats - brutal cards */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             <div className="border-4 border-secondary-foreground p-4 bg-primary text-primary-foreground text-center brutal-hover">
               <p className="font-display text-5xl">15+</p>
               <p className="font-mono text-xs uppercase">Years</p>
@@ -57,10 +57,6 @@ const AboutSection = () => {
             <div className="border-4 border-secondary-foreground p-4 bg-accent text-accent-foreground text-center brutal-hover">
               <p className="font-display text-5xl">200+</p>
               <p className="font-mono text-xs uppercase">Projects</p>
-            </div>
-            <div className="border-4 border-secondary-foreground p-4 bg-foreground text-background text-center brutal-hover">
-              <p className="font-display text-5xl">50+</p>
-              <p className="font-mono text-xs uppercase">Awards</p>
             </div>
           </div>
 
@@ -79,16 +75,6 @@ const AboutSection = () => {
                 </span>
               ))}
             </div>
-          </div>
-
-          {/* Recognition */}
-          <div className="border-l-4 border-primary pl-4">
-            <p className="font-mono text-sm uppercase tracking-widest text-secondary-foreground/60 mb-2">
-              [ Awards ]
-            </p>
-            <p className="font-mono text-sm text-secondary-foreground">
-              Emmy Nom. • Clio • Cannes Lions • D&AD • One Show • Webby
-            </p>
           </div>
         </div>
       </div>
