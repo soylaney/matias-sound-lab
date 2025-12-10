@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Play, Pause, Film, Tv, FileVideo, Palette } from "lucide-react";
+import { Play, Pause } from "lucide-react";
 
 type Category = "all" | "commercials" | "films" | "documentaries" | "soundart";
 
@@ -70,18 +70,17 @@ const projects: Project[] = [
   },
 ];
 
-const categories: { value: Category; label: string; icon: React.ReactNode }[] = [
-  { value: "all", label: "All", icon: null },
-  { value: "commercials", label: "Commercials", icon: <Tv className="w-4 h-4" /> },
-  { value: "films", label: "Films", icon: <Film className="w-4 h-4" /> },
-  { value: "documentaries", label: "Documentaries", icon: <FileVideo className="w-4 h-4" /> },
-  { value: "soundart", label: "Sound Art", icon: <Palette className="w-4 h-4" /> },
+const categories: { value: Category; label: string }[] = [
+  { value: "all", label: "All Projects" },
+  { value: "commercials", label: "Commercials" },
+  { value: "films", label: "Films" },
+  { value: "documentaries", label: "Documentaries" },
+  { value: "soundart", label: "Sound Art" },
 ];
 
 const PortfolioSection = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("all");
   const [playingId, setPlayingId] = useState<number | null>(null);
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const filteredProjects = activeCategory === "all" 
     ? projects 
@@ -91,113 +90,138 @@ const PortfolioSection = () => {
     setPlayingId(playingId === id ? null : id);
   };
 
+  const getCategoryColor = (category: Category) => {
+    switch (category) {
+      case "commercials": return "text-primary";
+      case "films": return "text-secondary";
+      case "documentaries": return "text-accent";
+      case "soundart": return "text-retro-green";
+      default: return "text-foreground";
+    }
+  };
+
   return (
-    <section className="min-h-screen py-32 px-6 bg-background relative">
-      <div className="container mx-auto max-w-6xl">
-        {/* Section header */}
-        <div className="mb-20">
-          <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-4">
-            Selected Work
-          </p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Portfolio
-          </h2>
-          <div className="gradient-line max-w-xs" />
-        </div>
+    <section className="min-h-screen py-24 px-4 bg-background">
+      <div className="container mx-auto max-w-5xl">
+        {/* Section window */}
+        <div className="bevel-frame">
+          {/* Title bar */}
+          <div className="window-titlebar">
+            <span>portfolio.html</span>
+            <div className="flex gap-1">
+              <div className="w-3 h-3 bevel-frame" />
+              <div className="w-3 h-3 bevel-frame" />
+              <div className="w-3 h-3 bevel-frame" />
+            </div>
+          </div>
 
-        {/* Category filters */}
-        <div className="flex flex-wrap gap-2 mb-16">
-          {categories.map((cat) => (
-            <button
-              key={cat.value}
-              onClick={() => setActiveCategory(cat.value)}
-              className={`font-mono text-sm uppercase tracking-widest px-5 py-2.5 border transition-all duration-300 ${
-                activeCategory === cat.value 
-                  ? "border-primary text-primary bg-primary/5" 
-                  : "border-border text-muted-foreground hover:border-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+          <div className="p-6">
+            {/* Section header */}
+            <div className="mb-8 text-center">
+              <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-2">
+                Selected Work
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Browse projects by category
+              </p>
+            </div>
 
-        {/* Projects grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {filteredProjects.map((project, index) => (
-            <article
-              key={project.id}
-              className="pro-card group animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
-              onMouseEnter={() => setHoveredId(project.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
-              {/* Project header */}
-              <div className="flex items-start justify-between mb-6">
-                <div>
-                  <p className="font-mono text-xs uppercase tracking-widest text-primary mb-2">
-                    {project.category === "soundart" ? "Sound Art" : project.category}
-                  </p>
-                  <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                </div>
-                <span className="font-mono text-sm text-muted-foreground">
-                  {project.year}
-                </span>
-              </div>
+            {/* Category navigation as table row */}
+            <div className="mb-8 overflow-x-auto">
+              <table className="mx-auto border-collapse border border-border">
+                <tbody>
+                  <tr>
+                    {categories.map((cat) => (
+                      <td key={cat.value} className="p-0">
+                        <button
+                          onClick={() => setActiveCategory(cat.value)}
+                          className={`px-4 py-2 text-xs uppercase tracking-wide w-full transition-all ${
+                            activeCategory === cat.value 
+                              ? "bg-primary text-primary-foreground" 
+                              : "bg-card hover:bg-muted text-muted-foreground hover:text-foreground"
+                          }`}
+                        >
+                          {cat.label}
+                        </button>
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-              {/* Waveform visualization */}
-              <div className="bg-muted/30 p-4 mb-6 border border-border/50">
-                <div className="flex items-center gap-0.5 h-12">
-                  {Array.from({ length: 48 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className={`flex-1 bg-primary/40 transition-all duration-200 ${
-                        playingId === project.id ? "waveform-bar active" : ""
+            {/* Projects table */}
+            <div className="bevel-frame-inset">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-muted/50">
+                    <th className="p-3 text-left text-xs uppercase tracking-wide text-muted-foreground border-b border-border">Project</th>
+                    <th className="p-3 text-left text-xs uppercase tracking-wide text-muted-foreground border-b border-border hidden md:table-cell">Client</th>
+                    <th className="p-3 text-left text-xs uppercase tracking-wide text-muted-foreground border-b border-border hidden md:table-cell">Year</th>
+                    <th className="p-3 text-center text-xs uppercase tracking-wide text-muted-foreground border-b border-border w-20">Audio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredProjects.map((project, index) => (
+                    <tr 
+                      key={project.id}
+                      className={`hover:bg-muted/30 transition-colors animate-fade-in ${
+                        index % 2 === 0 ? "bg-card/30" : ""
                       }`}
-                      style={{
-                        height: `${20 + Math.random() * 80}%`,
-                        animationDelay: `${i * 30}ms`,
-                        opacity: hoveredId === project.id || playingId === project.id ? 1 : 0.4,
-                      }}
-                    />
+                      style={{ animationDelay: `${index * 50}ms` }}
+                    >
+                      <td className="p-4 border-b border-border/50">
+                        <div>
+                          <span className={`text-xs uppercase tracking-wide ${getCategoryColor(project.category)}`}>
+                            {project.category === "soundart" ? "Sound Art" : project.category}
+                          </span>
+                          <h3 className="font-serif text-lg text-foreground mt-1">
+                            {project.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground mt-1 md:hidden">
+                            {project.client} • {project.year}
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-2">
+                            {project.description}
+                          </p>
+                          <p className="text-xs text-primary/70 mt-1">
+                            Role: {project.role}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="p-4 border-b border-border/50 hidden md:table-cell">
+                        <span className="text-sm text-foreground">{project.client}</span>
+                      </td>
+                      <td className="p-4 border-b border-border/50 hidden md:table-cell">
+                        <span className="text-sm text-muted-foreground">{project.year}</span>
+                      </td>
+                      <td className="p-4 border-b border-border/50 text-center">
+                        <button
+                          onClick={() => togglePlay(project.id)}
+                          className="retro-button p-2"
+                          title={playingId === project.id ? "Pause" : "Play demo"}
+                        >
+                          {playingId === project.id ? (
+                            <Pause className="w-4 h-4" />
+                          ) : (
+                            <Play className="w-4 h-4" />
+                          )}
+                        </button>
+                      </td>
+                    </tr>
                   ))}
-                </div>
-              </div>
+                </tbody>
+              </table>
+            </div>
 
-              {/* Play button and client */}
-              <div className="flex items-center justify-between mb-6">
-                <button
-                  onClick={() => togglePlay(project.id)}
-                  className="flex items-center gap-3 font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-300"
-                >
-                  {playingId === project.id ? (
-                    <>
-                      <Pause className="w-4 h-4" /> Pause
-                    </>
-                  ) : (
-                    <>
-                      <Play className="w-4 h-4" /> Play Demo
-                    </>
-                  )}
-                </button>
-                <span className="font-mono text-sm text-muted-foreground">
-                  {project.client}
-                </span>
-              </div>
-
-              {/* Description */}
-              <p className="font-mono text-sm text-muted-foreground mb-4 leading-relaxed">
-                {project.description}
+            {/* Footer info */}
+            <div className="mt-6 text-center">
+              <p className="text-xs text-muted-foreground">
+                Showing {filteredProjects.length} of {projects.length} projects • 
+                <span className="retro-link ml-1">View full archive »</span>
               </p>
-
-              {/* Role */}
-              <p className="font-mono text-xs uppercase tracking-widest text-foreground/50">
-                {project.role}
-              </p>
-            </article>
-          ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

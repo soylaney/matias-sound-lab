@@ -2,72 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Georgia&display=swap');
 
 @layer base {
   :root {
-    /* Professional Dark Theme */
-    --background: 220 20% 4%;
-    --foreground: 0 0% 95%;
+    /* Late 90s Dark Theme */
+    --background: 220 25% 8%;
+    --foreground: 45 20% 88%;
 
-    --card: 220 20% 7%;
-    --card-foreground: 0 0% 95%;
+    --card: 220 20% 12%;
+    --card-foreground: 45 20% 88%;
 
-    --popover: 220 20% 7%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 45 20% 88%;
 
-    --primary: 180 70% 45%;
-    --primary-foreground: 220 20% 4%;
+    --primary: 180 50% 50%;
+    --primary-foreground: 220 25% 8%;
 
-    --secondary: 280 60% 55%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 280 40% 50%;
+    --secondary-foreground: 45 20% 88%;
 
-    --muted: 220 15% 15%;
+    --muted: 220 15% 18%;
     --muted-foreground: 220 10% 55%;
 
-    --accent: 150 60% 45%;
-    --accent-foreground: 220 20% 4%;
+    --accent: 45 60% 55%;
+    --accent-foreground: 220 25% 8%;
 
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 20%;
+    --border: 220 15% 25%;
+    --border-light: 220 10% 35%;
+    --border-dark: 220 20% 15%;
     --input: 220 15% 15%;
-    --ring: 180 70% 45%;
+    --ring: 180 50% 50%;
 
-    --radius: 0.25rem;
+    --radius: 0px;
 
-    /* Custom accent colors */
-    --neon-cyan: 180 70% 45%;
-    --neon-purple: 280 60% 55%;
-    --neon-green: 150 60% 45%;
-    --warm-white: 40 20% 90%;
-
-    /* Professional shadows */
-    --shadow-soft: 0 4px 20px hsl(var(--background) / 0.5);
-    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.15);
+    /* Retro accent colors */
+    --retro-cyan: 180 50% 50%;
+    --retro-purple: 280 40% 50%;
+    --retro-gold: 45 60% 55%;
+    --retro-green: 120 40% 45%;
   }
 
   .dark {
-    --background: 220 20% 4%;
-    --foreground: 0 0% 95%;
-    --card: 220 20% 7%;
-    --card-foreground: 0 0% 95%;
-    --popover: 220 20% 7%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 180 70% 45%;
-    --primary-foreground: 220 20% 4%;
-    --secondary: 280 60% 55%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 220 15% 15%;
+    --background: 220 25% 8%;
+    --foreground: 45 20% 88%;
+    --card: 220 20% 12%;
+    --card-foreground: 45 20% 88%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 45 20% 88%;
+    --primary: 180 50% 50%;
+    --primary-foreground: 220 25% 8%;
+    --secondary: 280 40% 50%;
+    --secondary-foreground: 45 20% 88%;
+    --muted: 220 15% 18%;
     --muted-foreground: 220 10% 55%;
-    --accent: 150 60% 45%;
-    --accent-foreground: 220 20% 4%;
+    --accent: 45 60% 55%;
+    --accent-foreground: 220 25% 8%;
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 15% 20%;
+    --border: 220 15% 25%;
     --input: 220 15% 15%;
-    --ring: 180 70% 45%;
+    --ring: 180 50% 50%;
   }
 }
 
@@ -77,69 +75,129 @@
   }
 
   body {
-    @apply bg-background text-foreground font-mono antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
   ::selection {
-    @apply bg-primary/30 text-foreground;
+    @apply bg-primary/40 text-foreground;
   }
 }
 
 @layer components {
-  /* Professional button */
-  .pro-button {
-    @apply px-6 py-3 font-mono text-sm uppercase tracking-widest;
-    @apply bg-transparent text-foreground border border-border;
-    @apply transition-all duration-300 ease-out;
+  /* Beveled frame - classic 90s look */
+  .bevel-frame {
+    border: 2px solid;
+    border-color: hsl(var(--border-light)) hsl(var(--border-dark)) hsl(var(--border-dark)) hsl(var(--border-light));
+    background: hsl(var(--card));
   }
 
-  .pro-button:hover {
-    @apply border-primary text-primary;
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
+  .bevel-frame-inset {
+    border: 2px solid;
+    border-color: hsl(var(--border-dark)) hsl(var(--border-light)) hsl(var(--border-light)) hsl(var(--border-dark));
+    background: hsl(var(--muted) / 0.5);
   }
 
-  .pro-button-filled {
-    @apply px-6 py-3 font-mono text-sm uppercase tracking-widest;
-    @apply bg-primary text-primary-foreground border border-primary;
-    @apply transition-all duration-300 ease-out;
+  /* Classic 90s button */
+  .retro-button {
+    @apply px-4 py-2 text-sm uppercase tracking-wide;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 2px solid;
+    border-color: hsl(var(--border-light)) hsl(var(--border-dark)) hsl(var(--border-dark)) hsl(var(--border-light));
+    background: linear-gradient(180deg, hsl(var(--muted)) 0%, hsl(var(--card)) 100%);
+    color: hsl(var(--foreground));
+    cursor: pointer;
+    transition: all 0.1s ease;
   }
 
-  .pro-button-filled:hover {
-    @apply bg-transparent text-primary;
+  .retro-button:hover {
+    color: hsl(var(--primary));
+    background: linear-gradient(180deg, hsl(var(--card)) 0%, hsl(var(--muted)) 100%);
   }
 
-  /* Subtle glow text */
-  .glow-text {
-    text-shadow: 0 0 40px currentColor;
+  .retro-button:active {
+    border-color: hsl(var(--border-dark)) hsl(var(--border-light)) hsl(var(--border-light)) hsl(var(--border-dark));
   }
 
-  .glow-text-subtle {
-    text-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  .retro-button-primary {
+    @apply retro-button;
+    background: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(180 50% 35%) 100%);
+    color: hsl(var(--primary-foreground));
   }
 
-  /* Professional card */
-  .pro-card {
-    @apply bg-card/50 border border-border p-6 backdrop-blur-sm;
-    @apply transition-all duration-300;
+  .retro-button-primary:hover {
+    background: linear-gradient(180deg, hsl(180 50% 55%) 0%, hsl(var(--primary)) 100%);
+    color: hsl(var(--primary-foreground));
   }
 
-  .pro-card:hover {
-    @apply border-primary/50;
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.1);
+  /* Classic link style */
+  .retro-link {
+    color: hsl(var(--primary));
+    text-decoration: underline;
+    cursor: pointer;
   }
 
-  /* Grid background */
-  .grid-bg {
-    background-image: 
-      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    background-size: 60px 60px;
+  .retro-link:hover {
+    color: hsl(var(--accent));
   }
 
-  /* Gradient line */
-  .gradient-line {
-    @apply h-px w-full;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
+  .retro-link:visited {
+    color: hsl(var(--secondary));
+  }
+
+  /* Section divider - classic HR style */
+  .retro-divider {
+    @apply my-8;
+    height: 2px;
+    border: none;
+    background: linear-gradient(90deg, 
+      transparent, 
+      hsl(var(--border-light)) 10%, 
+      hsl(var(--primary) / 0.5) 50%, 
+      hsl(var(--border-light)) 90%, 
+      transparent
+    );
+  }
+
+  /* Classic table cell look */
+  .retro-cell {
+    @apply p-4;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card) / 0.5);
+  }
+
+  /* Status bar style */
+  .status-bar {
+    @apply px-4 py-2;
+    border: 2px solid;
+    border-color: hsl(var(--border-dark)) hsl(var(--border-light)) hsl(var(--border-light)) hsl(var(--border-dark));
+    background: hsl(var(--muted));
+    font-size: 11px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  /* Window title bar style */
+  .window-titlebar {
+    @apply px-4 py-2 flex items-center justify-between;
+    background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(220 40% 30%) 100%);
+    color: hsl(var(--foreground));
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  /* Classic form input */
+  .retro-input {
+    @apply px-3 py-2 text-sm;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 2px solid;
+    border-color: hsl(var(--border-dark)) hsl(var(--border-light)) hsl(var(--border-light)) hsl(var(--border-dark));
+    background: hsl(var(--muted) / 0.8);
+    color: hsl(var(--foreground));
+  }
+
+  .retro-input:focus {
+    outline: 1px dotted hsl(var(--primary));
+    outline-offset: 2px;
   }
 
   /* Audio waveform */
@@ -156,28 +214,44 @@
     50% { transform: scaleY(1); }
   }
 
-  /* Noise texture overlay */
-  .noise-overlay {
-    position: relative;
+  /* Marquee for vintage feel */
+  .retro-marquee {
+    @apply overflow-hidden whitespace-nowrap;
   }
 
-  .noise-overlay::before {
+  .retro-marquee-content {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  /* Subtle scanline effect */
+  .scanlines::after {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    opacity: 0.02;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--background) / 0.03) 2px,
+      hsl(var(--background) / 0.03) 4px
+    );
     pointer-events: none;
   }
 }
 
 @layer utilities {
-  .font-mono {
-    font-family: 'IBM Plex Mono', monospace;
+  .font-serif {
+    font-family: Georgia, 'Times New Roman', serif;
   }
 
-  .font-display {
-    font-family: 'Space Grotesk', sans-serif;
+  .font-sans {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
   .text-balance {
@@ -185,16 +259,12 @@
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.5s ease-out forwards;
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
-  }
-
-  .animate-fade-in-slow {
-    animation: fadeIn 1s ease-out forwards;
   }
 
   .stagger-1 { animation-delay: 0.1s; }
