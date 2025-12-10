@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Play, Pause, Volume2, VolumeX, Film, Tv, FileVideo, Palette, ExternalLink } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, ArrowUpRight } from "lucide-react";
 
 type Category = "all" | "commercials" | "films" | "documentaries" | "soundart";
 
@@ -19,9 +19,9 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Nike — Just Sound It",
+    title: "Just Sound It",
     category: "commercials",
-    client: "Nike Inc.",
+    client: "Nike",
     year: 2024,
     description: "Global campaign featuring immersive athletic soundscapes",
     role: "Sound Design & Mix",
@@ -67,7 +67,7 @@ const projects: Project[] = [
   },
   {
     id: 5,
-    title: "Coca-Cola — Refresh",
+    title: "Refresh",
     category: "commercials",
     client: "Coca-Cola",
     year: 2024,
@@ -91,12 +91,12 @@ const projects: Project[] = [
   },
 ];
 
-const categories: { value: Category; label: string; icon: React.ReactNode }[] = [
-  { value: "all", label: "All", icon: null },
-  { value: "commercials", label: "Commercials", icon: <Tv className="w-4 h-4" /> },
-  { value: "films", label: "Films", icon: <Film className="w-4 h-4" /> },
-  { value: "documentaries", label: "Docs", icon: <FileVideo className="w-4 h-4" /> },
-  { value: "soundart", label: "Sound Art", icon: <Palette className="w-4 h-4" /> },
+const categories: { value: Category; label: string }[] = [
+  { value: "all", label: "All Work" },
+  { value: "commercials", label: "Commercials" },
+  { value: "films", label: "Film" },
+  { value: "documentaries", label: "Documentary" },
+  { value: "soundart", label: "Sound Art" },
 ];
 
 const PortfolioSection = () => {
@@ -118,7 +118,6 @@ const PortfolioSection = () => {
       media.pause();
       setPlayingId(null);
     } else {
-      // Pause any currently playing media
       if (playingId && mediaRefs.current[playingId]) {
         mediaRefs.current[playingId]?.pause();
       }
@@ -135,36 +134,35 @@ const PortfolioSection = () => {
   };
 
   return (
-    <section className="min-h-screen py-32 px-6 bg-background relative scanlines overflow-hidden">
-      {/* Floating accent shapes */}
-      <div className="floating-accent w-80 h-80 bg-secondary top-1/4 -right-40" />
-      <div className="floating-accent w-64 h-64 bg-primary bottom-1/3 -left-32" />
+    <section className="py-32 px-6 lg:px-12 bg-background relative">
+      {/* Ambient backgrounds */}
+      <div className="ambient-bg w-[400px] h-[400px] bg-secondary top-1/4 -right-32" />
+      <div className="ambient-bg w-[300px] h-[300px] bg-accent bottom-1/3 -left-24" />
 
-      <div className="container mx-auto max-w-6xl relative z-10">
-        {/* Section header - artsy layout */}
-        <div className="mb-24 relative">
-          <p className="font-mono text-xs uppercase tracking-[0.4em] text-muted-foreground mb-6">
-            [ Selected Work ]
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section header */}
+        <div className="mb-20">
+          <p className="font-body text-sm text-primary mb-4 tracking-wide animate-fade-in">
+            Selected Work
           </p>
-          <h2 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-4">
+          <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6 animate-fade-in stagger-1">
             Portfolio
           </h2>
-          <p className="font-serif text-xl text-muted-foreground/60 italic max-w-md">
-            A curated collection of sound design across film, advertising, and art
+          <p className="font-body text-lg text-muted-foreground max-w-xl animate-fade-in stagger-2">
+            A curated selection of sound design work across film, advertising, and art installations.
           </p>
-          <div className="gradient-line max-w-sm mt-8" />
         </div>
 
-        {/* Category filters - refined */}
-        <div className="flex flex-wrap gap-4 mb-20">
+        {/* Category filters */}
+        <div className="flex flex-wrap gap-2 mb-16 animate-fade-in stagger-3">
           {categories.map((cat) => (
             <button
               key={cat.value}
               onClick={() => setActiveCategory(cat.value)}
-              className={`font-serif text-base italic px-6 py-2 transition-all duration-300 border-b-2 ${
+              className={`px-5 py-2.5 font-body text-sm transition-all duration-300 rounded-sm ${
                 activeCategory === cat.value 
-                  ? "text-primary border-primary" 
-                  : "text-muted-foreground border-transparent hover:text-foreground hover:border-border"
+                  ? "bg-primary text-primary-foreground" 
+                  : "text-muted-foreground hover:text-foreground border border-border hover:border-foreground/30"
               }`}
             >
               {cat.label}
@@ -173,32 +171,31 @@ const PortfolioSection = () => {
         </div>
 
         {/* Projects grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {filteredProjects.map((project, index) => (
             <article
               key={project.id}
-              className={`expand-card animate-fade-in cursor-pointer ${
+              className={`gallery-card animate-fade-in cursor-pointer ${
                 expandedId === project.id ? "lg:col-span-2" : ""
               }`}
               style={{ animationDelay: `${index * 100}ms` }}
               onMouseEnter={() => setExpandedId(project.id)}
               onMouseLeave={() => {
                 setExpandedId(null);
-                // Pause media when leaving
                 if (playingId === project.id) {
                   mediaRefs.current[project.id]?.pause();
                   setPlayingId(null);
                 }
               }}
             >
-              <div className={`p-6 transition-all duration-500 ${
-                expandedId === project.id ? "lg:flex lg:gap-8" : ""
+              <div className={`transition-all duration-500 ${
+                expandedId === project.id ? "lg:flex" : ""
               }`}>
                 {/* Media Section */}
-                <div className={`media-frame mb-6 ${
-                  expandedId === project.id ? "lg:mb-0 lg:w-1/2 lg:flex-shrink-0" : ""
+                <div className={`media-container ${
+                  expandedId === project.id ? "lg:w-1/2 lg:flex-shrink-0" : ""
                 }`}>
-                  <div className="relative aspect-video bg-background/50 crt-glow">
+                  <div className="relative aspect-video">
                     {project.mediaType === "video" ? (
                       <video
                         ref={(el) => { mediaRefs.current[project.id] = el; }}
@@ -209,24 +206,24 @@ const PortfolioSection = () => {
                         playsInline
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center">
+                      <div className="w-full h-full flex items-center justify-center bg-muted/20">
                         <audio
                           ref={(el) => { mediaRefs.current[project.id] = el; }}
                           src={project.mediaUrl}
                           loop
                         />
-                        {/* Waveform visualization for audio */}
-                        <div className="flex items-center gap-1 h-16 px-4">
-                          {Array.from({ length: 32 }).map((_, i) => (
+                        {/* Waveform visualization */}
+                        <div className="flex items-center gap-[3px] h-20 px-6">
+                          {Array.from({ length: 40 }).map((_, i) => (
                             <div
                               key={i}
-                              className={`w-1 bg-primary transition-all duration-150 ${
+                              className={`w-[3px] rounded-full bg-primary transition-all duration-150 ${
                                 playingId === project.id ? "waveform-bar active" : ""
                               }`}
                               style={{
-                                height: `${20 + Math.random() * 80}%`,
-                                animationDelay: `${i * 40}ms`,
-                                opacity: expandedId === project.id || playingId === project.id ? 1 : 0.5,
+                                height: `${15 + Math.random() * 85}%`,
+                                animationDelay: `${i * 30}ms`,
+                                opacity: expandedId === project.id || playingId === project.id ? 1 : 0.4,
                               }}
                             />
                           ))}
@@ -235,13 +232,13 @@ const PortfolioSection = () => {
                     )}
                     
                     {/* Play/Pause overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-background/30 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 flex items-center justify-center bg-background/40 opacity-0 hover:opacity-100 transition-opacity duration-300 z-10">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           handlePlayPause(project.id);
                         }}
-                        className="w-14 h-14 flex items-center justify-center bg-primary/90 text-primary-foreground hover:bg-primary transition-colors"
+                        className="w-16 h-16 flex items-center justify-center bg-primary text-primary-foreground rounded-full hover:scale-110 transition-transform duration-300"
                       >
                         {playingId === project.id ? (
                           <Pause className="w-6 h-6" />
@@ -251,17 +248,17 @@ const PortfolioSection = () => {
                       </button>
                     </div>
 
-                    {/* Media controls bar */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-background/80 px-3 py-2 flex items-center justify-between">
-                      <span className="font-mono text-xs text-primary uppercase">
-                        {project.mediaType === "video" ? "▶ VIDEO" : "♪ AUDIO"}
+                    {/* Media type indicator */}
+                    <div className="absolute bottom-4 left-4 flex items-center gap-3 z-10">
+                      <span className="font-body text-xs text-foreground/80 bg-background/60 backdrop-blur-sm px-3 py-1.5 rounded-sm">
+                        {project.mediaType === "video" ? "Video" : "Audio"}
                       </span>
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
                           toggleMute(project.id);
                         }}
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="text-foreground/80 hover:text-foreground bg-background/60 backdrop-blur-sm p-1.5 rounded-sm transition-colors"
                       >
                         {mutedId === project.id ? (
                           <VolumeX className="w-4 h-4" />
@@ -274,31 +271,23 @@ const PortfolioSection = () => {
                 </div>
 
                 {/* Content Section */}
-                <div className="flex-1">
+                <div className="p-8 flex-1">
                   {/* Header */}
                   <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <p className="font-mono text-xs uppercase tracking-widest text-primary mb-2">
-                        {project.category === "soundart" ? "Sound Art" : project.category}
-                      </p>
-                      <h3 className="font-display text-xl md:text-2xl font-semibold text-foreground">
-                        {project.title}
-                      </h3>
-                    </div>
-                    <span className="font-mono text-sm text-muted-foreground bevel-border px-2 py-1 bg-muted/30">
-                      {project.year}
-                    </span>
+                    <p className="font-body text-xs text-primary uppercase tracking-wider">
+                      {project.client} — {project.year}
+                    </p>
                   </div>
 
-                  {/* Client & Role */}
-                  <div className="flex items-center gap-4 mb-4 font-mono text-sm">
-                    <span className="text-foreground">{project.client}</span>
-                    <span className="text-muted-foreground">|</span>
-                    <span className="text-muted-foreground">{project.role}</span>
-                  </div>
+                  <h3 className="font-display text-2xl font-semibold text-foreground mb-3">
+                    {project.title}
+                  </h3>
 
-                  {/* Description */}
-                  <p className="font-mono text-sm text-muted-foreground leading-relaxed mb-4">
+                  <p className="font-body text-sm text-muted-foreground mb-4">
+                    {project.role}
+                  </p>
+
+                  <p className="font-body text-muted-foreground leading-relaxed mb-4">
                     {project.description}
                   </p>
 
@@ -307,12 +296,12 @@ const PortfolioSection = () => {
                     expandedId === project.id ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   }`}>
                     <div className="pt-4 border-t border-border">
-                      <p className="font-mono text-sm text-foreground/80 leading-relaxed mb-6">
+                      <p className="font-body text-foreground/80 leading-relaxed mb-6">
                         {project.details}
                       </p>
-                      <button className="pro-button flex items-center gap-2 text-xs">
-                        <span>View Full Project</span>
-                        <ExternalLink className="w-3 h-3" />
+                      <button className="btn-outline flex items-center gap-2 text-xs py-3 px-6">
+                        <span>View Project</span>
+                        <ArrowUpRight className="w-4 h-4" />
                       </button>
                     </div>
                   </div>
