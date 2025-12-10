@@ -16,11 +16,11 @@ const HeroSection = ({ onScrollToPortfolio }: HeroSectionProps) => {
             <span className="block text-primary rotate-text" style={{ animationDelay: '0.1s', marginLeft: '5%' }}>
               IS
             </span>
-            <span className="block text-foreground rotate-text" style={{ animationDelay: '0.2s', marginLeft: '-1%' }}>
-              NOT
+            <span className="block text-secondary rotate-text" style={{ animationDelay: '0.2s', marginLeft: '-1%' }}>
+              EVERY
             </span>
-            <span className="block text-secondary rotate-text" style={{ animationDelay: '0.3s', marginLeft: '8%' }}>
-              NOISE
+            <span className="block text-foreground rotate-text" style={{ animationDelay: '0.3s', marginLeft: '8%' }}>
+              THING
             </span>
           </h1>
 
