@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 
 interface HeroSectionProps {
   onScrollToPortfolio: () => void;
@@ -6,81 +6,81 @@ interface HeroSectionProps {
 
 const HeroSection = ({ onScrollToPortfolio }: HeroSectionProps) => {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative noise-overlay overflow-hidden">
-      {/* Floating accent shapes */}
-      <div className="floating-accent w-96 h-96 bg-primary top-1/4 -left-48" />
-      <div className="floating-accent w-64 h-64 bg-secondary bottom-1/4 -right-32" />
-      <div className="floating-accent w-48 h-48 bg-accent top-1/2 right-1/4 opacity-10" />
+    <section className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-20">
+      {/* Ambient backgrounds */}
+      <div className="ambient-bg w-[600px] h-[600px] bg-primary top-0 -right-48" />
+      <div className="ambient-bg w-[500px] h-[500px] bg-secondary bottom-0 -left-48" />
       
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 grid-bg opacity-20" />
-      
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-
-      {/* Vertical side text */}
-      <div className="absolute left-8 top-1/2 -translate-y-1/2 hidden lg:block">
-        <p className="vertical-text font-mono text-xs tracking-[0.5em] text-muted-foreground/40 uppercase">
-          Sound Design • NYC
-        </p>
-      </div>
-
-      {/* Year marker */}
-      <div className="absolute right-8 bottom-32 hidden lg:block">
-        <p className="font-mono text-xs text-muted-foreground/40 tracking-widest">EST. 2015</p>
-      </div>
-
       {/* Main content */}
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        {/* Artistic pre-title */}
-        <p className="font-serif text-lg md:text-xl text-muted-foreground/60 italic mb-4 animate-fade-in">
-          The Art of
-        </p>
-        
-        {/* Title */}
-        <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-bold text-foreground mb-4 animate-fade-in tracking-tight leading-none">
-          Matias
-          <br />
-          <span className="text-primary glow-text">Laney</span>
-        </h1>
-        
-        {/* Subtitle with artistic treatment */}
-        <div className="relative inline-block mb-12 animate-fade-in stagger-1">
-          <p className="font-serif text-2xl md:text-3xl text-foreground/80 italic tracking-wide">
-            Sound Designer
+      <div className="relative z-10 px-6 lg:px-12 max-w-7xl mx-auto w-full">
+        <div className="max-w-4xl">
+          {/* Pre-title */}
+          <p className="font-body text-sm text-muted-foreground mb-6 animate-fade-in tracking-wide">
+            Sound Designer — New York City
           </p>
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+          
+          {/* Title */}
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 animate-fade-in stagger-1 leading-[0.95]">
+            Crafting sonic
+            <br />
+            <span className="accent-gradient">experiences</span>
+            <br />
+            that resonate
+          </h1>
+          
+          {/* Description */}
+          <p className="font-body text-lg md:text-xl text-muted-foreground max-w-xl mb-12 leading-relaxed animate-fade-in stagger-2">
+            Award-winning sound design for film, commercials, documentaries, 
+            and immersive installations. Collaborating with visionary directors, 
+            agencies, and brands worldwide.
+          </p>
+
+          {/* CTA */}
+          <div className="flex flex-wrap items-center gap-6 animate-fade-in stagger-3">
+            <button 
+              onClick={onScrollToPortfolio}
+              className="btn-primary"
+            >
+              View Work
+            </button>
+            <button 
+              onClick={onScrollToPortfolio}
+              className="btn-outline"
+            >
+              Get in Touch
+            </button>
+          </div>
         </div>
 
-        {/* Description */}
-        <p className="font-mono text-sm md:text-base text-muted-foreground max-w-xl mx-auto mb-16 leading-relaxed animate-fade-in stagger-2">
-          Crafting immersive audio experiences for film, television, advertising, 
-          and contemporary art installations.
-        </p>
-
-        {/* Categories - artsy layout */}
-        <div className="flex flex-wrap justify-center gap-8 md:gap-12 mb-20 animate-fade-in stagger-3">
-          <span className="font-serif text-lg italic text-primary/80 hover:text-primary transition-colors cursor-default">Commercials</span>
-          <span className="font-serif text-lg italic text-secondary/80 hover:text-secondary transition-colors cursor-default">Films</span>
-          <span className="font-serif text-lg italic text-accent/80 hover:text-accent transition-colors cursor-default">Documentaries</span>
-          <span className="font-serif text-lg italic text-foreground/60 hover:text-foreground transition-colors cursor-default">Sound Art</span>
+        {/* Stats row */}
+        <div className="mt-24 pt-12 border-t border-border/50 animate-fade-in stagger-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16">
+            <div>
+              <p className="font-display text-4xl font-bold text-foreground mb-1">15+</p>
+              <p className="font-body text-sm text-muted-foreground">Years Experience</p>
+            </div>
+            <div>
+              <p className="font-display text-4xl font-bold text-foreground mb-1">200+</p>
+              <p className="font-body text-sm text-muted-foreground">Projects</p>
+            </div>
+            <div>
+              <p className="font-display text-4xl font-bold text-foreground mb-1">50+</p>
+              <p className="font-body text-sm text-muted-foreground">Awards</p>
+            </div>
+            <div>
+              <p className="font-display text-4xl font-bold text-primary mb-1">NYC</p>
+              <p className="font-body text-sm text-muted-foreground">Based</p>
+            </div>
+          </div>
         </div>
-
-        {/* CTA Button */}
-        <button 
-          onClick={onScrollToPortfolio}
-          className="pro-button animate-fade-in stagger-4"
-        >
-          View Selected Work
-        </button>
       </div>
 
       {/* Scroll indicator */}
       <button 
         onClick={onScrollToPortfolio}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors duration-500"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors duration-300 animate-fade-in stagger-5"
       >
-        <ChevronDown className="w-6 h-6 animate-bounce" />
+        <ArrowDown className="w-5 h-5 animate-bounce" />
       </button>
     </section>
   );
