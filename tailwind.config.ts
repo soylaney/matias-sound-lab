@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         mono: ["IBM Plex Mono", "monospace"],
         display: ["Space Grotesk", "sans-serif"],
+        serif: ["Cormorant Garamond", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

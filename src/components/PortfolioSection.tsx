@@ -135,29 +135,36 @@ const PortfolioSection = () => {
   };
 
   return (
-    <section className="min-h-screen py-32 px-6 bg-background relative scanlines">
+    <section className="min-h-screen py-32 px-6 bg-background relative scanlines overflow-hidden">
+      {/* Floating accent shapes */}
+      <div className="floating-accent w-80 h-80 bg-secondary top-1/4 -right-40" />
+      <div className="floating-accent w-64 h-64 bg-primary bottom-1/3 -left-32" />
+
       <div className="container mx-auto max-w-6xl relative z-10">
-        {/* Section header */}
-        <div className="mb-20">
-          <p className="font-mono text-sm uppercase tracking-[0.3em] text-primary mb-4">
+        {/* Section header - artsy layout */}
+        <div className="mb-24 relative">
+          <p className="font-mono text-xs uppercase tracking-[0.4em] text-muted-foreground mb-6">
             [ Selected Work ]
           </p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-4">
             Portfolio
           </h2>
-          <div className="gradient-line max-w-xs" />
+          <p className="font-serif text-xl text-muted-foreground/60 italic max-w-md">
+            A curated collection of sound design across film, advertising, and art
+          </p>
+          <div className="gradient-line max-w-sm mt-8" />
         </div>
 
-        {/* Category filters - 90s style tabs */}
-        <div className="flex flex-wrap gap-1 mb-16 bevel-border p-1 bg-muted/30 w-fit">
+        {/* Category filters - refined */}
+        <div className="flex flex-wrap gap-4 mb-20">
           {categories.map((cat) => (
             <button
               key={cat.value}
               onClick={() => setActiveCategory(cat.value)}
-              className={`font-mono text-xs uppercase tracking-wider px-4 py-2 transition-all duration-200 ${
+              className={`font-serif text-base italic px-6 py-2 transition-all duration-300 border-b-2 ${
                 activeCategory === cat.value 
-                  ? "bg-primary text-primary-foreground bevel-border" 
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  ? "text-primary border-primary" 
+                  : "text-muted-foreground border-transparent hover:text-foreground hover:border-border"
               }`}
             >
               {cat.label}
@@ -166,7 +173,7 @@ const PortfolioSection = () => {
         </div>
 
         {/* Projects grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {filteredProjects.map((project, index) => (
             <article
               key={project.id}
