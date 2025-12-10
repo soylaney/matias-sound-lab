@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Volume2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 interface RetroNavProps {
   onNavigate: (section: string) => void;
@@ -9,10 +9,9 @@ const RetroNav = ({ onNavigate }: RetroNavProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: "HOME", section: "home" },
-    { label: "PORTFOLIO", section: "portfolio" },
-    { label: "ABOUT", section: "about" },
-    { label: "CONTACT", section: "contact" },
+    { label: "Work", section: "portfolio" },
+    { label: "About", section: "about" },
+    { label: "Contact", section: "contact" },
   ];
 
   const handleNav = (section: string) => {
@@ -21,27 +20,26 @@ const RetroNav = ({ onNavigate }: RetroNavProps) => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 border-b-2 border-border backdrop-blur-sm">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button 
             onClick={() => handleNav("home")}
-            className="flex items-center gap-2 group"
+            className="group"
           >
-            <Volume2 className="w-6 h-6 text-primary neon-text-cyan" />
-            <span className="font-arcade text-xs text-primary neon-text-cyan group-hover:text-secondary transition-colors">
-              ML_SOUND
+            <span className="font-display text-xl font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
+              Matias Laney
             </span>
           </button>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-12">
             {navItems.map((item) => (
               <button
                 key={item.section}
                 onClick={() => handleNav(item.section)}
-                className="retro-button text-xs"
+                className="font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors duration-300"
               >
                 {item.label}
               </button>
@@ -51,24 +49,23 @@ const RetroNav = ({ onNavigate }: RetroNavProps) => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden retro-button p-2"
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
           >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden border-t-2 border-border py-4 animate-fade-in">
-            <div className="flex flex-col gap-2">
-              {navItems.map((item, index) => (
+          <div className="md:hidden border-t border-border py-6 animate-fade-in">
+            <div className="flex flex-col gap-6">
+              {navItems.map((item) => (
                 <button
                   key={item.section}
                   onClick={() => handleNav(item.section)}
-                  className="retro-button text-left"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="font-mono text-sm uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors text-left"
                 >
-                  {">"} {item.label}
+                  {item.label}
                 </button>
               ))}
             </div>
