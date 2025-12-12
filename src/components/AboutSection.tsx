@@ -1,5 +1,5 @@
 const AboutSection = () => {
-  const clients = ["BUDWEISER", "AMAZON", "HEINEKEN", "FEDEX", "HASBRO", "GEICO", "ADIDAS", "KIA", "MERCEDES BENZ", "TOYOTA", "AMAZON PRIME VIDEO", "MAX", "PEACOCK"];
+  const clients = ["HELLMANS", "KFC", "TOYOTA", "BRAHMA", "PATAGONIA"];
 
   return (
     <section className="py-16 px-4 bg-secondary text-secondary-foreground border-t-4 border-foreground relative overflow-hidden">
