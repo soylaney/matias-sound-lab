@@ -44,13 +44,13 @@ const Navigation = ({ onNavigate }: NavigationProps) => {
           </button>
           <button
             onClick={() => handleNav("about")}
-            className="absolute top-[40%] right-[5%] font-display text-[12vw] text-primary-foreground hover:text-foreground transition-colors rotate-[5deg]"
+            className="absolute top-[38%] right-[10%] sm:right-[15%] font-display text-[14vw] sm:text-[12vw] text-primary-foreground hover:text-foreground transition-colors rotate-[5deg]"
           >
             ABOUT
           </button>
           <button
             onClick={() => handleNav("contact")}
-            className="absolute bottom-[15%] left-[20%] font-display text-[18vw] text-primary-foreground hover:text-foreground transition-colors rotate-[-3deg]"
+            className="absolute bottom-[8%] sm:bottom-[12%] left-[5%] sm:left-[20%] font-display text-[16vw] sm:text-[18vw] text-primary-foreground hover:text-foreground transition-colors rotate-[-3deg]"
           >
             SAY HI
           </button>
