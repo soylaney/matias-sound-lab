@@ -28,24 +28,23 @@ const projects: Project[] = [
   { id: 9, title: "UN VERANO PARA BRAHMEARLA", category: "advertising", client: "Cerveza Brahma / Mutato BA", year: "", tagline: "Summer vibes", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
   
   // FILM & DOCUMENTARY
-  { id: 10, title: "SOBRE NADAR", category: "film", client: "Feature Film", year: "", tagline: "BEST SOUND Award Winner", role: "Sound & Mixing", note: "Festival Nacional de Cine Winner", mediaType: "video", mediaUrl: "" },
+  { id: 10, title: "SOBRE NADAR", category: "film", client: "Feature Film", year: "", tagline: "BEST SOUND Award Winner", role: "Sound Design & Mixing", note: "Festival Nacional de Cine Winner", mediaType: "video", mediaUrl: "" },
   { id: 11, title: "DIARIO ÍGNEO", category: "film", client: "Documentary Short", year: "", tagline: "Cumbre Vieja eruption", role: "Sound Designer", note: "La Palma volcano documentary", mediaType: "video", mediaUrl: "" },
-  { id: 12, title: "TINTA", category: "film", client: "Short Film", year: "", tagline: "Visual storytelling", role: "Art Director & Set Decorator", mediaType: "video", mediaUrl: "" },
+  { id: 12, title: "TINTA", category: "film", client: "Short Film", year: "", tagline: "Visual storytelling", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
   
   // COLLABORATIVE ART
   { id: 13, title: "EL ÚLTIMO HOMBRE DE EPECUÉN", category: "art", client: "PAGANA CASA DE ARTE", year: "", tagline: "Multimedia exhibition", role: "Sound Design & Soundscapes", note: "With Carolina Bonfanti Mele", mediaType: "audio", mediaUrl: "" },
-  { id: 14, title: "LA GALERÍA Y SUS VISITADORES", category: "art", client: "Jacques Martínez Gallery", year: "", tagline: "Participatory art", role: "Participating Artist", mediaType: "audio", mediaUrl: "" },
-  { id: 15, title: "FR-BB COLLECTIVE", category: "art", client: "Collective", year: "", tagline: "Experimental collaboration", role: "Participating Artist", mediaType: "audio", mediaUrl: "" },
+  { id: 14, title: "LA GALERÍA Y SUS VISITADORES", category: "art", client: "Jacques Martínez Gallery", year: "", tagline: "Participatory art", role: "Sound Art Installation", mediaType: "audio", mediaUrl: "" },
+  { id: 15, title: "DE CÓMO LAS BESTIARIAS EXISTEN", category: "art", client: "Jacques Martínez Gallery", year: "", tagline: "Exhibition for Carolina Bonfanti Mele", role: "Sound Designer", note: "\"exactamente igual que como si no existieran\"", mediaType: "audio", mediaUrl: "" },
+  { id: 16, title: "FR-BB COLLECTIVE", category: "art", client: "Collective", year: "", tagline: "Experimental collaboration", role: "Participating Artist", mediaType: "audio", mediaUrl: "" },
   
   // MUSIC & RECORD PRODUCTION
-  { id: 16, title: "ARCHIPIÉLAGOS", category: "music", client: "Album", year: "", tagline: "Full album production", role: "Recording, Mixing, Co-production", mediaType: "audio", mediaUrl: "" },
-  { id: 17, title: "PARA QUÉ LO QUERÍAMOS", category: "music", client: "Lu Rizzo", year: "", tagline: "Single release", role: "Mastering", mediaType: "audio", mediaUrl: "" },
-  { id: 18, title: "SESIÓN DE VERANO", category: "music", client: "Hércules Vigila", year: "", tagline: "Live session", role: "Live Recording, Mixing, Mastering", mediaType: "audio", mediaUrl: "" },
+  { id: 17, title: "ARCHIPIÉLAGOS", category: "music", client: "Album", year: "", tagline: "Full album production", role: "Recording, Mixing, Co-production", mediaType: "audio", mediaUrl: "" },
   
   // THEATER
-  { id: 19, title: "NO (TAN) HAMLET", category: "theater", client: "Theater", year: "", tagline: "Live orchestra", role: "Sound Engineer, Editor, Musician", mediaType: "audio", mediaUrl: "" },
-  { id: 20, title: "GRAN CHACO", category: "theater", client: "Scenic Documentary", year: "", tagline: "Documentary theater", role: "Sound Design", mediaType: "audio", mediaUrl: "" },
-  { id: 21, title: "HOLYFOOD", category: "theater", client: "Theater", year: "", tagline: "Theatrical sound", role: "Sound Design", mediaType: "audio", mediaUrl: "" },
+  { id: 18, title: "NO (TAN) HAMLET", category: "theater", client: "Theater", year: "", tagline: "Live orchestra", role: "Sound Engineer, Editor, Musician", mediaType: "audio", mediaUrl: "" },
+  { id: 19, title: "GRAN CHACO", category: "theater", client: "Scenic Documentary", year: "", tagline: "Documentary theater", role: "Sound Design", mediaType: "audio", mediaUrl: "" },
+  { id: 20, title: "HOLYFOOD", category: "theater", client: "Theater", year: "", tagline: "Theatrical sound", role: "Sound Design", mediaType: "audio", mediaUrl: "" },
 ];
 
 const categories: { value: Category; label: string }[] = [
