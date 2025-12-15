@@ -31,7 +31,7 @@ const AboutSection = () => {
 
           <div className="space-y-4 font-mono text-sm leading-relaxed text-secondary-foreground/80">
             <p>
-              Working from Barcelona, chasing the sounds that make you rewind twice. 
+              Working from Barcelona, chasing the sounds that make you feel. 
               Part scientist, part mad composer—always hunting for that perfect noise.
             </p>
           </div>
