@@ -31,8 +31,14 @@ const AboutSection = () => {
 
           <div className="space-y-4 font-mono text-sm leading-relaxed text-secondary-foreground/80">
             <p>
-              Working from Barcelona, chasing the sounds that make you feel. 
-              Part scientist, part mad composer—always hunting for that perfect noise.
+              Matias Laney stands at the intersection of sonic art and audiovisual production.
+              Operating as a multidisciplinary sound artist and designer, Matias does not simply record audio; he sculpts narratives. His practice is defined by a rare versatility that allows him to move seamlessly between the abstract demands of sound art installations and the rigorous technical requirements of commercial production and cinema.
+            </p>
+            <p>
+              Whether designing the award-winning soundscape for the film Sobre Nadar, performing live, or creating immersive audio environments for galleries, Matias brings a distinct auditory signature to every project. His work, which spans productions worldwide, is characterized by a fusion of technical precision and visceral artistic sensitivity.
+            </p>
+            <p>
+              Matias Laney offers more than sound—he provides a sonic identity that transforms how an audience perceives, feels, and remembers a work.
             </p>
           </div>
         </div>
