@@ -31,8 +31,8 @@ const AboutSection = () => {
 
           <div className="space-y-4 font-mono text-sm leading-relaxed text-secondary-foreground/80">
             <p>
-              Based in Barcelona. If you want background music, find someone else. 
-              If you want sound that makes people stop and feel something—let's talk.
+              Based in Barcelona. I believe sound should move people, not just fill silence. 
+              Every project is a collaboration—let's create something memorable together.
             </p>
           </div>
         </div>
