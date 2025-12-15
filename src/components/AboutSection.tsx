@@ -24,21 +24,12 @@ const AboutSection = () => {
         <div>
           <div className="space-y-6 mb-12">
             <p className="font-display text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
-              I DON'T MAKE 
-              <span className="bg-primary text-primary-foreground px-2 mx-2">PRETTY</span>
-              SOUNDS.
-            </p>
-            <p className="font-display text-4xl md:text-5xl lg:text-6xl leading-[0.95]">
               I MAKE SOUNDS 
-              <span className="bg-foreground text-background px-2 mx-2">THAT HIT.</span>
+              <span className="bg-foreground text-background px-2 mx-1">THAT HIT.</span>
             </p>
           </div>
 
           <div className="space-y-4 font-mono text-sm leading-relaxed text-secondary-foreground/80">
-            <p>
-              15 years of refusing to play it safe. Every project is a chance to 
-              break something and rebuild it better.
-            </p>
             <p>
               Based in Barcelona. If you want background music, find someone else. 
               If you want sound that makes people stop and feel something—let's talk.
