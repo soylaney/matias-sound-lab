@@ -31,8 +31,8 @@ const AboutSection = () => {
 
           <div className="space-y-4 font-mono text-sm leading-relaxed text-secondary-foreground/80">
             <p>
-              Barcelona sun, late nights, and frequencies that get under your skin. 
-              Sound is texture, emotion, the invisible layer that makes you lean in.
+              Working from Barcelona, chasing the sounds that make you rewind twice. 
+              Part scientist, part mad composer—always hunting for that perfect noise.
             </p>
           </div>
         </div>
