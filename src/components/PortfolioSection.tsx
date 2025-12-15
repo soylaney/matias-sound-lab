@@ -18,35 +18,34 @@ interface Project {
 
 const projects: Project[] = [
   // ADVERTISING & CAMPAIGNS
-  { id: 1, title: "NEW YORK", category: "advertising", client: "Café Bustelo / BBH USA", year: 2024, tagline: "NYC in every sip", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
-  { id: 2, title: "HURACÁN", category: "advertising", client: "Reinserta / Grey México", year: 2024, tagline: "Social impact - Hurricane Otis", role: "Sound Designer", note: "Social impact campaign on Hurricane Otis in Acapulco", mediaType: "video", mediaUrl: "" },
-  { id: 3, title: "TRES", category: "advertising", client: "Reinserta / Grey México", year: 2023, tagline: "Maternity & childhood in prison", role: "Sound Design", note: "Multi-award-winning campaign", mediaType: "video", mediaUrl: "" },
-  { id: 4, title: "TEAM YAPE", category: "advertising", client: "Yape / 121 Latam", year: 2025, tagline: "Sports team launch", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
-  { id: 5, title: "ASMR", category: "advertising", client: "KFC / Linda TV", year: 2023, tagline: "Crunchy sound textures", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
-  { id: 6, title: "VIVE MÁS SALUDABLE", category: "advertising", client: "Disney / Linda TV", year: 2023, tagline: "Live Healthier", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
-  { id: 7, title: "SENDERO SUR", category: "advertising", client: "Cerveza Patagonia / R/GA", year: 2023, tagline: "Southern trails", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
-  { id: 8, title: "EL SABOR IRRESISTIBLE", category: "advertising", client: "Hellmann's / Linda TV", year: 2023, tagline: "Irresistible Taste", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
-  { id: 9, title: "UN VERANO PARA BRAHMEARLA", category: "advertising", client: "Cerveza Brahma / Mutato BA", year: 2022, tagline: "Summer vibes", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
+  { id: 1, title: "NEW YORK", category: "advertising", client: "Café Bustelo / BBH USA", year: "", tagline: "NYC in every sip", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
+  { id: 2, title: "HURACÁN", category: "advertising", client: "Reinserta / Grey México", year: "", tagline: "Social impact - Hurricane Otis", role: "Sound Designer", note: "Social impact campaign on Hurricane Otis in Acapulco", mediaType: "video", mediaUrl: "" },
+  { id: 4, title: "TEAM YAPE", category: "advertising", client: "Yape / 121 Latam", year: "", tagline: "Sports team launch", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
+  { id: 5, title: "ASMR", category: "advertising", client: "KFC / Linda TV", year: "", tagline: "Crunchy sound textures", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
+  { id: 6, title: "VIVE MÁS SALUDABLE", category: "advertising", client: "Disney / Linda TV", year: "", tagline: "Live Healthier", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
+  { id: 7, title: "SENDERO SUR", category: "advertising", client: "Cerveza Patagonia / R/GA", year: "", tagline: "Southern trails", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
+  { id: 8, title: "EL SABOR IRRESISTIBLE", category: "advertising", client: "Hellmann's / Linda TV", year: "", tagline: "Irresistible Taste", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
+  { id: 9, title: "UN VERANO PARA BRAHMEARLA", category: "advertising", client: "Cerveza Brahma / Mutato BA", year: "", tagline: "Summer vibes", role: "Sound Design & Mixing", mediaType: "video", mediaUrl: "" },
   
   // FILM & DOCUMENTARY
-  { id: 10, title: "SOBRE NADAR", category: "film", client: "Feature Film", year: 2023, tagline: "BEST SOUND Award Winner", role: "Sound & Mixing", note: "Festival Nacional de Cine Winner", mediaType: "video", mediaUrl: "" },
-  { id: 11, title: "DIARIO ÍGNEO", category: "film", client: "Documentary Short", year: 2022, tagline: "Cumbre Vieja eruption", role: "Sound Designer", note: "La Palma volcano documentary", mediaType: "video", mediaUrl: "" },
-  { id: 12, title: "TINTA", category: "film", client: "Short Film", year: 2015, tagline: "Visual storytelling", role: "Art Director & Set Decorator", mediaType: "video", mediaUrl: "" },
+  { id: 10, title: "SOBRE NADAR", category: "film", client: "Feature Film", year: "", tagline: "BEST SOUND Award Winner", role: "Sound & Mixing", note: "Festival Nacional de Cine Winner", mediaType: "video", mediaUrl: "" },
+  { id: 11, title: "DIARIO ÍGNEO", category: "film", client: "Documentary Short", year: "", tagline: "Cumbre Vieja eruption", role: "Sound Designer", note: "La Palma volcano documentary", mediaType: "video", mediaUrl: "" },
+  { id: 12, title: "TINTA", category: "film", client: "Short Film", year: "", tagline: "Visual storytelling", role: "Art Director & Set Decorator", mediaType: "video", mediaUrl: "" },
   
   // COLLABORATIVE ART
-  { id: 13, title: "EL ÚLTIMO HOMBRE DE EPECUÉN", category: "art", client: "PAGANA CASA DE ARTE", year: 2023, tagline: "Multimedia exhibition", role: "Sound Design & Soundscapes", note: "With Carolina Bonfanti Mele", mediaType: "audio", mediaUrl: "" },
-  { id: 14, title: "LA GALERÍA Y SUS VISITADORES", category: "art", client: "Jacques Martínez Gallery", year: 2022, tagline: "Participatory art", role: "Participating Artist", mediaType: "audio", mediaUrl: "" },
-  { id: 15, title: "FR-BB COLLECTIVE", category: "art", client: "Collective", year: 2022, tagline: "Experimental collaboration", role: "Participating Artist", mediaType: "audio", mediaUrl: "" },
+  { id: 13, title: "EL ÚLTIMO HOMBRE DE EPECUÉN", category: "art", client: "PAGANA CASA DE ARTE", year: "", tagline: "Multimedia exhibition", role: "Sound Design & Soundscapes", note: "With Carolina Bonfanti Mele", mediaType: "audio", mediaUrl: "" },
+  { id: 14, title: "LA GALERÍA Y SUS VISITADORES", category: "art", client: "Jacques Martínez Gallery", year: "", tagline: "Participatory art", role: "Participating Artist", mediaType: "audio", mediaUrl: "" },
+  { id: 15, title: "FR-BB COLLECTIVE", category: "art", client: "Collective", year: "", tagline: "Experimental collaboration", role: "Participating Artist", mediaType: "audio", mediaUrl: "" },
   
   // MUSIC & RECORD PRODUCTION
-  { id: 16, title: "ARCHIPIÉLAGOS", category: "music", client: "Album", year: 2019, tagline: "Full album production", role: "Recording, Mixing, Co-production", mediaType: "audio", mediaUrl: "" },
-  { id: 17, title: "PARA QUÉ LO QUERÍAMOS", category: "music", client: "Lu Rizzo", year: 2022, tagline: "Single release", role: "Mastering", mediaType: "audio", mediaUrl: "" },
-  { id: 18, title: "SESIÓN DE VERANO", category: "music", client: "Hércules Vigila", year: 2016, tagline: "Live session", role: "Live Recording, Mixing, Mastering", mediaType: "audio", mediaUrl: "" },
+  { id: 16, title: "ARCHIPIÉLAGOS", category: "music", client: "Album", year: "", tagline: "Full album production", role: "Recording, Mixing, Co-production", mediaType: "audio", mediaUrl: "" },
+  { id: 17, title: "PARA QUÉ LO QUERÍAMOS", category: "music", client: "Lu Rizzo", year: "", tagline: "Single release", role: "Mastering", mediaType: "audio", mediaUrl: "" },
+  { id: 18, title: "SESIÓN DE VERANO", category: "music", client: "Hércules Vigila", year: "", tagline: "Live session", role: "Live Recording, Mixing, Mastering", mediaType: "audio", mediaUrl: "" },
   
   // THEATER
-  { id: 19, title: "NO (TAN) HAMLET", category: "theater", client: "Theater", year: 2023, tagline: "Live orchestra", role: "Sound Engineer, Editor, Musician", mediaType: "audio", mediaUrl: "" },
-  { id: 20, title: "GRAN CHACO", category: "theater", client: "Scenic Documentary", year: 2022, tagline: "Documentary theater", role: "Sound Design", mediaType: "audio", mediaUrl: "" },
-  { id: 21, title: "HOLYFOOD", category: "theater", client: "Theater", year: 2021, tagline: "Theatrical sound", role: "Sound Design", mediaType: "audio", mediaUrl: "" },
+  { id: 19, title: "NO (TAN) HAMLET", category: "theater", client: "Theater", year: "", tagline: "Live orchestra", role: "Sound Engineer, Editor, Musician", mediaType: "audio", mediaUrl: "" },
+  { id: 20, title: "GRAN CHACO", category: "theater", client: "Scenic Documentary", year: "", tagline: "Documentary theater", role: "Sound Design", mediaType: "audio", mediaUrl: "" },
+  { id: 21, title: "HOLYFOOD", category: "theater", client: "Theater", year: "", tagline: "Theatrical sound", role: "Sound Design", mediaType: "audio", mediaUrl: "" },
 ];
 
 const categories: { value: Category; label: string }[] = [
@@ -135,10 +134,7 @@ const PortfolioSection = () => {
             <div className={`flex flex-col ${expandedId === project.id ? "md:flex-row" : ""}`}>
               {/* Project header */}
               <div className={`p-6 border-b-4 border-foreground ${expandedId === project.id ? "md:border-b-0 md:border-r-4 md:w-1/2" : ""}`}>
-                <div className="flex items-start justify-between mb-4">
-                  <span className="font-mono text-xs uppercase bg-foreground text-background px-2 py-1">
-                    {project.year}
-                  </span>
+                <div className="flex items-start justify-end mb-4">
                   <span className="font-mono text-xs uppercase text-muted-foreground">
                     {project.client}
                   </span>
