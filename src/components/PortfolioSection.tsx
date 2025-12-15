@@ -35,7 +35,7 @@ const projects: Project[] = [
   // COLLABORATIVE ART
   { id: 13, title: "EL ÚLTIMO HOMBRE DE EPECUÉN", category: "art", client: "PAGANA CASA DE ARTE", year: "", tagline: "Multimedia exhibition", role: "Sound Design & Soundscapes", note: "With Carolina Bonfanti Mele", mediaType: "audio", mediaUrl: "" },
   { id: 14, title: "LA GALERÍA Y SUS VISITADORES", category: "art", client: "Jacques Martínez Gallery", year: "", tagline: "Participatory art", role: "Sound Art Installation", mediaType: "audio", mediaUrl: "" },
-  { id: 15, title: "DE CÓMO LAS BESTIARIAS EXISTEN", category: "art", client: "Jacques Martínez Gallery", year: "", tagline: "Exhibition for Carolina Bonfanti Mele", role: "Sound Designer", note: "\"exactamente igual que como si no existieran\"", mediaType: "audio", mediaUrl: "" },
+  { id: 15, title: "DE CÓMO LAS BESTIARIAS EXISTEN", category: "art", client: "Jacques Martínez Gallery", year: "", tagline: "Exhibition", role: "Sound Art", note: "Sound installation for Carolina Bonfanti Mele made with Victoria Barca's composition", mediaType: "audio", mediaUrl: "" },
   { id: 16, title: "FR-BB COLLECTIVE", category: "art", client: "Collective", year: "", tagline: "Experimental collaboration", role: "Participating Artist", mediaType: "audio", mediaUrl: "" },
   
   // MUSIC & RECORD PRODUCTION
