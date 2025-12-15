@@ -31,8 +31,8 @@ const AboutSection = () => {
 
           <div className="space-y-4 font-mono text-sm leading-relaxed text-secondary-foreground/80">
             <p>
-              Based in Barcelona. I believe sound should move people, not just fill silence. 
-              Every project is a collaboration—let's create something memorable together.
+              Barcelona sun, late nights, and frequencies that get under your skin. 
+              Sound is texture, emotion, the invisible layer that makes you lean in.
             </p>
           </div>
         </div>
